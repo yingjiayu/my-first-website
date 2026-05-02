@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SOH Melbourne</title>
+  <link rel="stylesheet" href="" />
+  <script src="" defer></script>
+</head>
+
+<body>
+    <nav class="delivery-confirmation">
+        <h2>SOH</h2>
+        <P>MELBOURNE</P>
+    </nav>
+
+    <form action="" class="delivery-form">
+        <p class="title">Contact</p>
+        <input type="text" name="email" size="40" maxlength="40" placeholder="email">
+
+        <p class="title">Delivery</p>
+        <input type="text" name="address" size="30" maxlength="50" placeholder="address">
+        <input type="text" name="postcode" size="10" maxlength="10" placeholder="postcode">
+        <input type="text" name="fristname" size="20" maxlength="20" placeholder="first name">
+        <input type="text" name="lastname" size="20" maxlength="20" placeholder="last name">
+
+        <p class="title">Payment</p>
+        <div class="payment-info">
+            <p class="card">Credit card</p>
+            <input type="text" name="cardnumber" size="40" maxlength="40" placeholder="card number">
+            <input type="text" name="expireddate" size="30" maxlength="">
+            <input type="number" required min="0" max="1000">
+            <input type="text" name="name" size="40" maxlength="40" placeholder="name">
+        </div>
+
+        <p class="title">Mobile number</p>
+        <input type="text" name="mobilenumber" size="40" maxlength="40" placeholder="Mobile number">
+
+        <button type="submit" onclick>Paynow</button>
+    </form>
+
+    <div class="delivery-right">
+        
+        <!--product 1-->
+        <div class="product">
+            <img src="" alt="">
+            
+            <div class="product-info">
+                <h2 class="delivery-product-name">Super Bloom Candle</h2>
+                <h2 class="delivery-product-price">$80</h2>
+                <h4 class="delivery-product-quantity">1</h4>
+            </div>
+
+        </div>
+
+        <!--product 2-->
+        <div class="product">
+            <img src="" alt="">
+            
+            <div class="product-info">
+                <h2 class="delivery-product-name">St Nicholas Candle</h2>
+                <h2 class="delivery-product-price">$80</h2>
+                <h4 class="delivery-product-quantity">1</h4>
+            </div>
+
+        </div>
+
+        <!--product 3-->
+        <div class="product">
+            <img src="" alt="">
+            
+            <div class="product-info">
+                <h2 class="delivery-product-name">Highlands Candle</h2>
+                <h2 class="delivery-product-price">$80</h2>
+                <h4 class="delivery-product-quantity">1</h4>
+            </div>
+
+        </div>
+
+        <p>-------------------------------------------------------</p>
+        <h4 class="subtotal-shipping">Subtotal( <span>3</span>items)</h4>
+        <h4 class="subtotal-shipping">$<span>240</span></h4>
+        <h4 class="subtotal-shipping">Shipping</h4>
+        <h4 class="subtotal-shipping">$<span>0</span></h4>
+        <h2 class="total">Total</h2>
+        <h2 class="total">$<span>240</span></h2>
+    </div>
+</body>
