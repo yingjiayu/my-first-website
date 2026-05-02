@@ -86,6 +86,20 @@
 <button type="button" onclick="">Add to cart</button>
 <button type="button" onclick="">Check out</button>
 
+<!--quick cart-->
+<div class="cart-afteradding">
+    <button class="clicking">
+        <p>
+            cart ( <span class="cart-count">3</span> )
+        </p>
+    </button>
+</div>
+<dialog id="cart-dialog">
+  <h2>Your cart</h2>
+  <div id="cart-items"></div>
+</dialog>
+
+
 </div>
 
 <!--feedback-->
@@ -94,13 +108,15 @@
     <p>5.0 out of 5.0</p>
     <button type="button">Write a feedback</button>
 
-        <select name="feedbackfilters" id="reviwfilters">
+        <!--reviews's filters-->
+        <select name="feedbackfilters" id="reviewfilters">
             <option value="">Most recent</option>
             <option value="">Oldest</option>
             <option value="">Highest rating</option>
             <option value="">Lowest rating</option>
         </select>
 
+        <!--2 reviews-->
         <section class="reviews-jessie">
             <div class="reviews-left">
                 <p class="review-rate">( 5.0 ) out of 5</p>
@@ -132,8 +148,72 @@
 
             <time datetime="2026-02-02" class="review-date">3 months ago</time>
         </section>
-            
+
+    <!--load more-->
+    <button class="load" type="button" onclick> Load more </button>          
 </div>
 
+<div class="recommendations">
+    <div class="productcards-recommendations">
+        <img scr="">
+        <h6>Agrapé Candle</h6>
+        <p>Oakwood, Moss, Leather, Patchouli</p>
+        <p class="rating">(5.0)</p>
+        <p class="price">$80</p>
+    </div>
+
+    <div class="productcardsinlist">
+        <img scr="">
+        <h4>Fig Tree Candle</h4>
+        <p>Fresh/green fig, Blackcurrant leaves</p>
+        <p class="rating">(5.0)</p>
+        <p class="price">$80</p>
+    </div>
+
+    <div class="productcardsinlist">
+        <img scr="">
+        <h4>293 Candle</h4>
+        <p>Bergamot, Grapefruit</p>
+        <p class="rating">(5.0)</p>
+        <p class="price">$80</p>
+    </div>
+
+</div>
+
+<!--footer-->
+<footer>
+    <div class="help">
+        <h4>Help</h4>
+        <ul>
+            <li>ABOUT</li>
+            <li>CANDLE CARE</li>
+            <li>SHIPPING</li>
+            <li>RETURNS</li>
+            <li>STOCKIST</li>
+            <li>TERMS OF SERVICE</li>
+            <li>CONTACT</li>
+            <li>PRIVACY POLICY</li>
+        </ul>
+    </div>
+
+    <div class="followus">
+        <h4>Follow us</h4>
+            <ul>
+                <li>FACEBOOK</li>
+                <li>INSTAGRAM</li>
+                <li>TIKTOK</li>
+            </ul>
+    </div>
+
+    <!--subscribe-->
+    <form class="subcribe">
+        <h4>Subscribe us</h4>
+        <input id="subscribe" type="text" placeholder="First name" size="20" maxlength="40"/>
+        <br/>
+        <input id="subscribe" type="text" placeholder="Email" size="20" maxlength="40"/>
+        <button type="submit">Subscribe</button>
+    </form>
+    <p>© 2026 SOH Melbourne. All rights reserved.</p>
+</footer>
 
 </body>
