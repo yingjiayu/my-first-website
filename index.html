@@ -4,23 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SOH Melbourne</title>
-  <link rel="stylesheet" href="" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Metal+Mania&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Metal+Mania&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
   <script src="" defer></script>
 </head>
 
 <body>
 
-
 <!--nav-->
 <nav>
         <ul class="nav-menu">
-            <li class="nav-item">logo</li>
-            <li class="nav-item">shop
+            <li class="logo"><img src="media/logo.png" alt="soh logo"></li>
+            <li class="nav-item-left">shop</li>
 
-                <!--the whole dropdown section-->
+                <!--the whole dropdown section
                 <div class="dropdown">
 
-                    <!--one column in drop down section-->
+                    one column in drop down section
                     <div class="dropdown-column">
                         <h4>Search by Scent</h4>
                         <ul>
@@ -38,21 +39,26 @@
                         <h4>Search by Collection</h4>
                     </div>
                 </div>
-            </li>
+            </li>-->
 
-            <li class="nav-item">about</li>
-            <li class="nav-item">candle care</li>
-            <li class="nav-item">search</li>
-            <li class="nav-item">login</li>
-            <li class="nav-item">cart</li>
+            <li class="nav-item-left">about</li>
+            <li class="nav-item-left">candle care</li>
+
+            <div class="nav-right">
+            <li class="nav-item-right">search</li>
+            <li class="nav-item-right">login</li>
+            <li class="nav-item-right">cart</li>
+            </div>
         </ul>
 </nav>
 
 <!--hero header-->
 <header class="heroimage">
-    <img src=""/>
+    <img class="homepage-image"src="media/homepage.jpeg" alt="homepage image">
+    <div class="hero-text">
     <p>Our candles are purity, freshness, and a connection to nature.</p>
-    <div class="discoverbutton"> <a href="productlists.html">Discover all candles</a></div>
+    <button type="button" class="discoverbutton"><a href="productlists.html">Discover all candles</a></button>
+    </div>
 </header>
 
 <!--Main content-->
