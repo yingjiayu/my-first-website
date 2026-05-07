@@ -8,24 +8,20 @@ body {
     font-family: 'Lora', 'Montserrat', sans-serif;
     background-color: #ffffff;
     color: #000000;
-    width: 1440px;
-    height: 1024px;
   }
 
 nav {
     background-color:#C7B389;
     color:#4D4F44;
     font-family:'Lora', 'Montserrat', sans-serif;
-    width: 1440px;
+    width: 100%;
     height: 70px;
-
 }
 .nav-menu{
     display: flex;
     list-style: none;
     align-items: center;
     gap: 40px;
-    
 }
 
 .logo img {
@@ -41,7 +37,8 @@ nav {
 
 .nav-right{
     display: flex;
-    margin-left: 370px;
+    justify-content: flex-end;
+    margin-left: 300px;
 }
 
 .nav-item-right {
@@ -55,23 +52,49 @@ nav {
 .heroimage{
     position: relative;
     width:100%;
-    height:926px;
 }
+
 .homepage-image{
-    width:1440px;
-    height:auto;
+    width:100%;
+    height:730px;
     display: block;
 }
-.hero-text {
+
+.hero-text{
     position: absolute;
-    top: 350px;
-    left: 50%;
-    
+    top: 250px;
+    left: 56%;
     text-align: center;
     color: white;
 }
 
-.hero p{
-    font-family: ;
+.hero{
+    font-family:'Libertinus Serif Display','Lora',sans-serif;
+    font-size: 25px;
+    font-weight: 20;
 }
+
+.discover-button{
+    background-color: rgba(255, 255, 255);
+    border: solid rgba(255, 255, 255);
+    border-radius: 100px;   
+    color: #000000;
+    padding: 10px 37px;
+    font-family: 'Montserrat','Lora',sans-serif;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    margin-top: 50px;
+}
+
+.freeshipping{
+    display: flex;
+    background-color: #D4EAC8;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 70px;
+    font-family:'Montserrat','Lora',sans-serif;
+}
+
 
