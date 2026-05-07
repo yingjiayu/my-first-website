@@ -10,6 +10,7 @@ body {
     color: #000000;
   }
 
+/*nav*/
 nav {
     background-color:#C7B389;
     color:#4D4F44;
@@ -49,6 +50,7 @@ nav {
     padding-left: 65px;
 }
 
+/*homepage image and discover*/
 .heroimage{
     position: relative;
     width:100%;
@@ -87,6 +89,7 @@ nav {
     margin-top: 50px;
 }
 
+/*freeshipping section*/
 .freeshipping{
     display: flex;
     background-color: #D4EAC8;
@@ -95,6 +98,179 @@ nav {
     width:100%;
     height: 70px;
     font-family:'Montserrat','Lora',sans-serif;
+    font-size: 15px;
+    font-weight: 300;
 }
+
+/*best sellers section*/
+.bestsellers{
+    display: block;
+    background-color: #ffffff;
+    width: 100%;
+    height: 600px;
+}
+
+.bestsellers-text{
+    padding: 40px 60px;
+    font-weight: 200;
+    font-size: 30px;
+}
+
+.bestsellers-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.productcard-bestsellers{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 100px;
+    width: 400px;
+    height: 400px;
+    background-color: #C7B389;
+    border-radius: 10px;
+}
+
+.product-cards-image{
+    border-radius: 10px 10px 0 0;
+}
+.product-cards-text{
+    padding: 10px 20px;
+}
+
+.product-cards-textandrating{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.product-cards-title{
+    font-family: 'Lora', 'Montserrat', sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+}
+
+.product-cards-rating{
+    font-family: 'Lora', 'Montserrat', sans-serif;
+    font-weight: 50;
+    font-size: 15px;
+}
+
+.product-cards-info{
+    font-family: 'Montserrat','Lora',sans-serif;
+    font-weight: 350;
+    font-size: 14px;
+    padding: 10px 0 15px 0;
+}
+
+.product-cards-prices{
+    font-family: 'Lora', 'Montserrat', sans-serif;
+    font-weight: 50;
+    font-size: 25px;
+}
+
+/*featured collections scetion*/
+.featured-collections{
+    background-color: #F8E5E5;
+    width: 100%;
+    height: 600px;
+}
+
+.featured-title{
+    padding: 40px 40px 20px 60px;
+    font-weight: 200;
+    font-size: 30px;
+}
+
+.collection-allcards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.collectioncards{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 170px;
+    margin: 20px 100px 50px 100px;
+    border-radius: 10px;
+    background-color: #C7B389;
+}
+
+.collection-cards-image{
+    width: 60%;
+    height: 170px;
+    border-radius: 10px 0 0 10px;
+}
+
+.collection-cards-text{
+    font-size: 20px;
+    font-weight: 50;
+    padding: 70px 70px 50px 90px;
+}
+
+/*about us section*/
+.aboutus{
+    display: block;
+    background-color: #ffffff;
+    width: 100%;
+    height: 650px;
+}
+
+.aboutus-allcards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutuscards{
+    width: 600px;
+    height: 400px;
+    margin: 0 20px;
+}
+
+.aboutus-title{
+    padding: 40px 40px 20px 0;
+    font-weight: 200;
+    font-size: 30px;
+}
+
+.aboutus-cards-allinfo{
+    display: flex;
+    flex-direction: row;
+}
+.aboutus-image{
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+}
+.aboutus-text{
+    font-family: 'Montserrat','Lora',sans-serif;
+    font-weight: 350;
+    font-size: 15px;
+    padding: 0 20px 0 20px;
+}
+
+.aboutus-textandreadmore{
+    display: flex;
+    flex-direction: column;
+}
+.read-more{
+    font-family: 'Montserrat','Lora',sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 35px 20px 0 20px;
+}
+
+
+
+
+
+
+
 
 
