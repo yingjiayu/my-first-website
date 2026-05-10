@@ -1,0 +1,296 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Lora', 'Montserrat', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   NAV
+========================= */
+
+nav {
+  background-color: #C7B389;
+  width:100%;
+  height: 4.5rem;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 5vw, 2.5rem);
+  list-style: none;
+  padding: 0 1.5rem;
+}
+
+.logo img {
+  height: 4.5rem;
+}
+
+.nav-item-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-right {
+  margin-left: 50%;
+  display: flex;
+  gap: clamp(0.5rem, 2vw, 2rem);
+}
+
+.nav-item-right {
+  display: flex;
+  align-items: center;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.heroimage {
+  position: relative;
+  width: 100%;
+}
+
+.homepage-image {
+  width: 100%;
+  height: clamp(22rem, 95vh, 46rem);
+  object-fit: cover;
+}
+
+.hero-text {
+  position: absolute;
+  top: 30%;
+  left: 52%;
+  text-align: center;
+  color: white;
+  width: clamp(16rem, 40vw, 28rem);
+}
+
+.hero {
+  font-size: clamp(1rem, 1.6vw, 1.6rem);
+}
+
+.discover-button {
+  background-color: #fff;
+  border-radius: 999px;
+  padding: 0.6rem 2rem;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 2rem;
+}
+
+/* =========================
+   FREE SHIPPING
+========================= */
+
+.freeshipping {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #D4EAC8;
+  height: 4rem;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   BEST SELLERS
+========================= */
+
+.bestsellers {
+  padding: 3rem 1.5rem;
+}
+
+.bestsellers-text {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  margin-bottom: 2rem;
+}
+
+.bestsellers-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 3vw, 3rem);
+}
+
+.productcard-bestsellers {
+  width: clamp(16rem, 28vw, 25rem);
+  background-color: #C7B389;
+  border-radius: 0.6rem;
+}
+
+.product-cards-text {
+  padding: 1rem;
+}
+
+.product-cards-title {
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+}
+
+.product-cards-info {
+  font-size: 0.85rem;
+  padding: 0.5rem 0;
+}
+
+.product-cards-prices {
+  font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+}
+
+/* =========================
+   FEATURED COLLECTION
+========================= */
+
+.featured-collections {
+  background-color: #F8E5E5;
+  padding: 4rem 1.5rem;
+}
+
+.featured-title {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  margin-bottom: 2rem;
+}
+
+.collection-allcards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.collectioncards {
+  display: flex;
+  width: clamp(18rem, 80vw, 70rem);
+  border-radius: 0.6rem;
+  overflow: hidden;
+  background-color: #C7B389;
+}
+
+.collection-cards-text {
+  font-size: clamp(1rem, 1.3vw, 1.3rem);
+  padding: 2rem;
+}
+
+/* =========================
+   ABOUT US
+========================= */
+
+.aboutus {
+  padding: 4rem 1.5rem;
+}
+
+.aboutus-allcards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.aboutuscards {
+  width: clamp(20rem, 40vw, 38rem);
+}
+
+.aboutus-image {
+  width: 100%;
+  height: auto;
+  border-radius: 0.6rem;
+}
+
+.aboutus-text {
+  font-size: 0.95rem;
+  padding: 1rem 0;
+}
+
+.read-more {
+  font-size: 0.9rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #C7B389;
+  padding: 3rem 1.5rem;
+  gap: 2rem;
+}
+
+.footer-title {
+  font-size: 1.2rem;
+}
+
+.footer-unordered-list {
+  list-style: none;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.footer-copyrights {
+  font-size: 0.7rem;
+  margin-top: 2rem;
+}
+
+.subscribe-section {
+  margin-left: auto;
+}
+
+.subscribe-input {
+  width: clamp(14rem, 25vw, 22rem);
+  padding: 0.5rem;
+}
+
+.subscribe-button {
+  padding: 0.6rem;
+  background-color: #3D2E22;
+  color: white;
+  border: none;
+}
+
+
+@media (max-width: 390px) {
+  .nav-right {
+    margin-left: 1rem;
+  }
+
+
+  .hero-text {
+    left: 50%;
+    width: 90%;
+  }
+
+  .bestsellers-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .collectioncards {
+    flex-direction: column;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+}
+
+
+
+
+
