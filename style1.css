@@ -6,12 +6,14 @@
 
 html {
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
   font-family: 'Lora', 'Montserrat', sans-serif;
   background-color: #ffffff;
   color: #000000;
+  overflow-x: hidden;
 }
 
 img {
@@ -20,10 +22,8 @@ img {
   display: block;
 }
 
-/* =========================
-   NAV
-========================= */
 
+/*nav*/
 nav {
   background-color: #C7B389;
   width:100%;
@@ -40,6 +40,7 @@ nav {
 
 .logo img {
   height: 4.5rem;
+  width: auto;
 }
 
 .nav-item-left {
@@ -48,7 +49,7 @@ nav {
 }
 
 .nav-right {
-  margin-left: 50%;
+  margin-left: auto;
   display: flex;
   gap: clamp(0.5rem, 2vw, 2rem);
 }
@@ -58,10 +59,9 @@ nav {
   align-items: center;
 }
 
-/* =========================
-   HERO
-========================= */
 
+
+/*hero*/
 .heroimage {
   position: relative;
   width: 100%;
@@ -76,24 +76,26 @@ nav {
 .hero-text {
   position: absolute;
   top: 30%;
-  left: 52%;
+  left: 65%;
+  transform: translateX(-50%);
   text-align: center;
-  color: white;
-  width: clamp(16rem, 40vw, 28rem);
+  width: min(90vw, 28rem);
 }
 
 .hero {
   font-size: clamp(1rem, 1.6vw, 1.6rem);
+  color: #ffffff;
 }
 
 .discover-button {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 999px;
   padding: 0.6rem 2rem;
   font-size: 1rem;
   text-decoration: none;
   display: inline-block;
   margin-top: 2rem;
+  color: #000000;
 }
 
 /* =========================
@@ -186,10 +188,6 @@ nav {
   padding: 2rem;
 }
 
-/* =========================
-   ABOUT US
-========================= */
-
 .aboutus {
   padding: 4rem 1.5rem;
 }
@@ -220,9 +218,6 @@ nav {
   font-size: 0.9rem;
 }
 
-/* =========================
-   FOOTER
-========================= */
 
 footer {
   display: flex;
@@ -266,28 +261,11 @@ footer {
 
 
 @media (max-width: 390px) {
-  .nav-right {
-    margin-left: 1rem;
+  .logo img {
+  height: 4.5rem;
+  width: auto;
   }
-
-
-  .hero-text {
-    left: 50%;
-    width: 90%;
-  }
-
-  .bestsellers-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .collectioncards {
-    flex-direction: column;
-  }
-
-  footer {
-    flex-direction: column;
-  }
+  
 }
 
 
