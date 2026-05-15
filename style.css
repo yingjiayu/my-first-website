@@ -20,7 +20,7 @@ nav {
     color:#4D4F44;
     font-family:'Lora', 'Montserrat', sans-serif;
     width: 100%;
-    height: 4.5rem;
+    height: 5rem;
 }
 .nav-menu{
     display: flex;
@@ -29,18 +29,18 @@ nav {
 }
 
 .logo img {
-    height: 4.5rem;
+    height: 5rem;
 }
 
 .nav-item-left {
-    height: 4.5rem;
+    height: 5rem;
     display: flex;
     align-items: center;
     margin-left: clamp(1rem, 5vw, 5rem);
 }
 /* drop down section */
 .nav-item-left-shop{
-    height: 4.5rem;
+    height: 5rem;
     display: flex;
     align-items: center;
     margin-left: clamp(1rem, 5vw, 5rem);
@@ -107,13 +107,13 @@ nav {
 
 .homepage-image{
     width:100%;
-    height:730px;
+    height: calc( 100vh - 5rem);
     display: block;
 }
 
 .hero-text{
     position: absolute;
-    top: 250px;
+    top: 40%;
     left: 56%;
     text-align: center;
     color: white;
@@ -145,7 +145,7 @@ nav {
     justify-content: center;
     align-items: center;
     width:100%;
-    height: 70px;
+    height: clamp(5rem, 6.5vh, 5.9rem);
     font-family:'Montserrat','Lora',sans-serif;
     font-size: 15px;
     font-weight: 300;
@@ -900,19 +900,513 @@ footer{
 .recommendations-card-title, .recommendations-card-prices{
     font-family: 'Lora', 'Montserrat', sans-serif;
     font-weight: 100;
-    font-size: clamp(0.5rem, 2vw, 2rem);
+    font-size: clamp(0.5rem, 1.5vw, 1.4rem);
 }
 
 .recommendations-card-rating{
     font-family: 'Lora', 'Montserrat', sans-serif;
     font-weight: 50;
-    font-size: clamp(0.4rem, 1.4vw, 1.4rem);
+    font-size: clamp(0.4rem, 1.2vw, 1.2rem);
 }
 
 .recommendations-card-info{
     font-family: 'Montserrat','Lora',sans-serif;
     font-weight: 350;
-    font-size: clamp(0.3rem, 1.3vw, 1.2rem);
+    font-size: clamp(0.3rem, 1vw, 1.2rem);
+    padding: clamp(0.1rem, 1vh, 0.7rem) 0;
+}
+
+/*quick cart section*/
+.quick-cart-section{
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 1.5vh ,1rem);
+    width: clamp(10rem,33vw,30rem);
+    height: auto;
+    background-color: #C7B389;
+    padding: clamp(.1rem, 2vh, 1.3rem);
+    border-radius: 0 0 10px 10px;
+}
+.quick-cart-afteradding-number{
+    font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+}
+.quick-cart-free-shipping{
+    font-size: clamp(0.4rem, 1vw, 1rem);
+    font-weight: 100;
+    padding: clamp(0.1rem,1vw,0.9rem) 0;
+}
+.quick-cart-items{
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.1rem, 2vh, 1.3rem);
+}
+.quick-cart-item-one{
+    display: flex;
+    flex-direction: row;
+    gap:clamp(0.1rem, 1.5vw, 1.4rem);
+}
+.quick-cart-item-one-image{
+    width: clamp(4rem, 15vw, 14rem);
+    height: clamp(3rem, 17vh,11rem);
+    border-radius: 10px;
+}
+.quick-cart-item-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.quick-cart-item-title{
+    font-size: clamp(0.5rem, 1.2vw, 1.5rem);
+    font-weight: 100;
+        padding-bottom: clamp(0.1rem, 0.5vh, 0.4rem);
+}
+.quick-cart-item-scents{
+    font-size: clamp(0.4rem, 1vw, 1rem);
+    font-family: 'Montserrat','Lora',sans-serif;
+}
+.quick-cart-row-price-count{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.quick-cart-item-price{
+    font-size:clamp(0.5rem, 1.5vw, 1.5rem);
+    font-weight: 100;
+}
+.quick-quantity-count{
+    display: flex;
+    flex-direction: row;
+}
+.quick-cart-quantity-minus{
+    width: clamp(0.5rem, 3.7vw, 3.7rem);
+    border-radius: 10px 0 0 10px;
+    font-size: clamp(0.5rem, 1.3vw, 1.2rem);
+    border: none;
+}
+.quick-cart-quantity-input{
+    width: clamp(0.5rem, 3vw, 2.7rem);
+    border-radius: 0;
+    border: none;
+    text-align: center;
+}
+.quick-cart-quantity-plus{
+    width: clamp(0.5rem, 3.7vw, 3.7rem);
+    border-radius: 0 10px 10px 0;
+    border: none;
+    font-size: clamp(0.5rem, 1.3vw, 2.3rem);
+}
+.quick-cart-subtotal{
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #000000;
+    margin-top: clamp(0.1rem, 2vh, 1.3rem);
+}
+.quick-cart-right-subtotal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: clamp(0.1rem, 2vh, 1.3rem);
+}
+.quick-cart-right-subtotal-text, .quick-cart-right-subtotal-price{
+    font-size: clamp(0.5rem, 1.2vw, 1.5rem);
+    font-weight: 100;
+}
+.quick-cart-right-tax{
+    font-size: clamp(0.4rem, 1vw, 1rem);
+    padding: 0 0 clamp(0.1rem, 2vh, 1.3rem) clamp(0.1rem, 2vh, 1.3rem);
+}
+.quick-order-notes{
+    background-color: #ffffff;
+    border: none;
+    padding-top: clamp(0.1rem,1vw,0.9rem);
+    padding-left: clamp(0.1rem,1vw,0.9rem);
+    border-radius: 10px;
+    font-family: 'Montserrat','Lora',sans-serif;
+    margin-left: clamp(0.1rem, 2vh, 1.3rem);
+    margin-right: clamp(0.1rem, 2vh, 1.3rem);
+    margin-bottom: clamp(0.5rem, 3vh, 2rem);
+}
+.quick-cart-page-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(0.5rem, 2vh, 1.3rem);
+    width: 100%; 
+}
+
+.quick-cart-right-check-out{
+    width: clamp(5rem, 20vw, 18rem);
+    height: clamp(1rem, 4vh, 2.6rem);
+    border: none;
+    background-color: #3D2E22;
+    color: #ffffff;
+    font-family: 'Montserrat','Lora',sans-serif;
+    font-size: clamp(0.5rem, 1.3vw, 1.2rem);
+    font-weight: 200;
+    border-radius: 10px;
+}
+.quick-cart-right-continue-shopping{
+    width: clamp(5rem, 20vw, 18rem);
+    height: clamp(1rem, 4vh, 2.6rem);
+    border: 0.5px solid #3D2E22;
+    background-color: #ffffff;
+    color: #3D2E22;
+    font-family: 'Montserrat','Lora',sans-serif;
+    font-size: clamp(0.5rem, 1.3vw, 1.2rem);
+    font-weight: 200;
+    border-radius: 10px;
+}
+
+/*cart page*/
+.cart-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding:clamp(0.5rem, 3vh, 2rem) clamp(0.2rem, 4vw, 3.7rem);
+}
+.cart-free-shipping{
+    font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+    font-weight: 100;
+}
+.cart-left-right{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    gap: clamp(2rem, 6vw, 6rem);
+}
+.cart-left{
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 3vh, 2rem);
+    flex: 1; 
+}
+.cart-afteradding-number{
+    font-size: clamp(0.9rem, 1.9vw, 1.75rem);
+}
+.cart-items{
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.1rem, 4vh, 2.6rem);
+}
+.cart-item-one{
+    display: flex;
+    flex-direction: row;
+    gap:clamp(0.1rem, 2.5vw, 2.3rem);
+}
+.cart-item-one-image{
+    width: clamp(7rem, 25vw, 23rem);
+    height: auto;
+    border-radius: 10px;
+}
+.cart-item-right{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; 
+}
+.cart-item-title{
+    font-size: clamp(0.9rem, 2.3vw, 2rem);
+    font-weight: 100;
+    padding-bottom: clamp(0.5rem, 1.3vh, 0.9rem);
+}
+.cart-item-scents{
+    font-size: clamp(0.5rem, 1.2vw, 1.1rem);
+    font-family: 'Montserrat','Lora',sans-serif;
+    padding-bottom: clamp(0.5rem, 3vh, 2rem);
+}
+.cart-row-price-count{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.cart-item-price{
+    font-size:clamp(0.5rem, 2vw, 1.8rem);
+    font-weight: 100;
+}
+.quantity-count{
+    display: flex;
+    flex-direction: row;
+}
+.cart-quantity-minus{
+    width: clamp(0.5rem, 3vw, 2.7rem);
+    border-radius: 10px 0 0 10px;
+    font-size: clamp(0.5rem, 2vw, 1.8rem);
+}
+.cart-quantity-input{
+    width: clamp(0.5rem, 3vw, 2.7rem);
+    border-radius: 0;
+    text-align: center;
+}
+.cart-quantity-plus{
+    width: clamp(0.5rem, 3vw, 2.7rem);
+    border-radius: 0 10px 10px 0;
+    font-size: clamp(0.5rem, 2vw, 1.8rem);
+}
+.remove{
+    border: none;
+    width: fit-content;
+    font-size: clamp(0.5rem, 1.2vw, 1.1rem);
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+}
+
+.cart-right{
+    display: flex;
+    flex-direction: column;
+    padding-top: clamp(0.5rem, 5vh, 3.2rem);
+    width: clamp(20rem, 30vw, 27rem);
+}
+.cart-right-subtotal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.cart-right-subtotal-text, .cart-right-subtotal-price{
+    font-size: clamp(0.7rem, 2vw, 1.9rem);
+    font-weight: 100;
+}
+.cart-right-tax{
+    font-size: clamp(0.5rem, 1vw, 0.9rem);
+    padding-bottom: clamp(0.5rem, 3vh, 2rem);
+}
+.order-notes{
+    background-color: #D4EAC8;
+    border: none;
+    padding-top: clamp(0.1rem,1vw,0.9rem);
+    padding-left: clamp(0.1rem,1vw,0.9rem);
+    border-radius: 10px;
+    font-family: inherit;
+    margin-bottom: clamp(0.5rem, 3vh, 2rem);
+}
+.cart-page-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(0.5rem, 3vh, 2rem);
+    width: 100%; 
+}
+
+.cart-right-check-out{
+    width: clamp(5rem, 20vw, 18rem);
+    height: clamp(1rem, 6vh, 3.9rem);
+    border: none;
+    background-color: #3D2E22;
+    color: #ffffff;
+    font-family: 'Montserrat','Lora',sans-serif;
+    font-size: clamp(0.5rem, 1.3vw, 1.2rem);
+    font-weight: 200;
+    border-radius: 5px;
+}
+.cart-right-continue-shopping{
+    width: clamp(5rem, 20vw, 18rem);
+    height: clamp(1rem, 6vh, 3.9rem);
+    border: 0.5px solid #3D2E22;
+    background-color: #ffffff;
+    color: #3D2E22;
+    font-family: 'Montserrat','Lora',sans-serif;
+    font-size: clamp(0.5rem, 1.3vw, 1.2rem);
+    font-weight: 200;
+    border-radius: 5px;
+}
+
+
+/*delivery page*/
+.delivery-page-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#C7B389;
+    color:#4D4F44;
+    font-family:'Lora', 'Montserrat', sans-serif;
+    width: 100%;
+    height: 5rem;
+}
+.delivery-page-nav-image {
+    height: 5rem;
+}
+.delivery-page-main{
+    display: flex;
+    flex-direction: row;
+    min-height:calc(100vh - 5rem);
+}
+.delivery-form{
+    font-family: 'Montserrat','Lora',sans-serif;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding:clamp(1rem,3vh,2rem) clamp(1rem,4.6vw, 4rem);
+}
+.delivery-form-title{
+    font-size: clamp(0.9rem, 2vw, 1.9rem);
+    font-family: 'Montserrat','Lora',sans-serif;
+}
+
+.delivery-form input{
+  width:100%;
+  height: clamp(0.9rem, 4vh, 2.7rem);
+  border-radius: 10px;
+  padding:clamp(0.3rem, 0.7vw, 0.7rem);
+  margin:clamp(0.5rem, 1.7vh, 1.1rem) 0;
+  border:0.5px solid #000000;
+}
+
+.form-row{
+    display: flex;
+    flex-direction: row;
+    gap: clamp(0.5rem, 1vw, 1rem);
+}
+.form-row .address{
+    width: auto;
+    flex: 3;
+}
+.form-row .postcode{
+    width: auto;
+    flex: 1;
+}
+.form-payment-box{
+    background-color:#D9D9D9;
+    border: 1px solid #000000;
+    border-radius: 10px 10px 0 0;
+    padding: clamp(0.5rem, 1vw, 1rem);
+    margin-top: clamp(0.5rem, 1vw, 1rem);
+}
+.card{
+    font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+    font-weight: 400;
+}
+.form-payment-box-input{
+    background-color:#D9D9D9;
+    margin-bottom: clamp(0.5rem, 1vw, 1rem);
+    border-radius: 0 0 10px 10px;
+    padding: 0 clamp(0.5rem, 1vw, 1rem);
+}
+.form-payment-box-input input{
+    border:none;
+}
+.delivery-page-button{
+    align-self: center;
+}
+.payment-button{
+    width: clamp(2rem, 7vw, 6.5rem);
+    height: clamp(3rem, 4vh, 2.6rem);
+    border-radius: 10px;
+    background-color: #3D2E22;
+    color: #ffffff;
+}
+
+.delivery-right{
+    flex: 2;
+    background-color: #E8E8E8;
+    padding: clamp(0.5rem,3.3vw,3rem);
+}
+.product{
+  display:flex;
+  flex-direction: row;
+  gap:clamp(0.5rem, 1.7vw, 2rem);
+  margin-bottom:clamp(0.5rem, 3vh, 2.5rem);
+  position:relative;
+}
+.img-box{
+  position: relative;
+  width: clamp(3rem, 15vw, 14rem);
+}
+
+.img-box img{
+  width: 100%;
+  display: block;
+  border-radius:8px;
+}
+
+.quantity{
+  --size: clamp(1rem, 2.2vw, 1.62rem);
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  top: calc(var(--size) / -2);
+  right: calc(var(--size) / -2);
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--size) * 0.45);
+}
+
+.product-info{
+  flex:1;
+  display:flex;
+  justify-content:space-between;
+}
+
+.total-section{ 
+  border-top:1px solid #000000;
+  padding-top:clamp(0.5rem, 1.5vh ,1rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.subtotal-box,.shipping-box,.total-price-box{
+    width: clamp(10rem,27vw,24.5rem);
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin: clamp(0.4rem, 0.5vw, 0.45rem) 0;
+}
+.delivery-product-name, .delivery-product-price{
+    font-size: clamp(0.9rem, 2.3vw, 2rem);
+    font-weight: 100;
+}
+
+.subtotal-box-text, .subtotal-box-price, .subtotal-shipping,.subtotal-shipping-price{
+    font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+    font-weight: 100;
+}
+
+.delivery-page-total, .delivery-page-total-price{
+    font-size: clamp(0.9rem, 2vw, 1.8rem);
+    font-weight: bold;
+}
+.payment-successfully{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    min-height: calc(100vh - 4.5rem);
+    gap: clamp(0.5rem, 1.5vh ,1rem);
+    font-family: 'Montserrat','Lora',sans-serif;
+}
+.payment-successfully img{
+    width: clamp(5rem, 10vw, 10rem);
+    height: auto;
+}
+.payment-successfully h3{
+    font-size: clamp(0.9rem, 2vw, 1.8rem);
+    font-weight: 400;
+
+}
+.payment-successfully p{
+    font-size: clamp(0.5rem, 1.5vw, 1.5rem);
+}
+.payment-successfully button{
+    width: clamp(10rem, 25vw, 23rem);
+    height: clamp(3rem, 7vh, 4.5rem);
+    margin-top: clamp(0.5rem, 3vh ,2rem);
+    border-radius: 10px;
+    border: none;
+    background-color: #3D2E22;
+    color: #ffffff;
+    font-size: clamp(0.9rem, 2vw, 1.8rem);
+    font-weight: 100;
 }
 
 
