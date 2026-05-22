@@ -30,7 +30,68 @@
 </nav>
 
 <main>
-<div id="product-page" class="product-information-layout">
+<div class="product-information-layout">
+    <div class="product-image-section">
+        <img class="product-image" src="media/super-bloom-productpage.png" alt="the image of super bloom candle">
+        <img class="product-image-bottom" src="media/super-bloom-productpage1.png" alt="the image of super bloom candle">
+    </div>
+
+    <div class="product-detailed-information">
+
+        <h1 class="textinfo-title">SUPER BLOOM CANDLE</h1>
+        <h1 class="textinfo-title">$80.00 AUD  ( 5.0 )</h1>
+        <p class="textinfo-p">A sweet rose garden in the spring.</p>
+        <div class="textinfo-fragrance-section">
+            <h5 class="textinfo-fragrance-title">Fragrance</h6>
+            <p class="textinfo-p">Top: Bulgarian Roses</p>
+            <p class="textinfo-p">Middle: Rose</p>
+            <p class="textinfo-p">Base: Berries</p>
+        </div>
+        <p class="textinfo-p-kg">400g - 80+ hours burn time</p>
+
+<!--dropdown details about product-->
+        <div class="product-description">
+
+            <div class="product-description-one">
+                <div class="product-description-trigger">
+                    <h5 class="product-description-title">Product Description</h5>
+                </div>
+
+                <div class="product-description-dropdown-section">
+                    <p class="product-description-dropdown">Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
+                </div>
+            </div>
+
+            <div class="product-description-two">
+                <div class="product-description-trigger-two">
+                    <h5 class="product-description-title-two">Candle care</h5>
+                </div>
+
+                <div class="product-description-dropdown-section-two">
+                    <p class="product-description-dropdown-two">Each time you relight your candle trim off the mushroom and make sure your wick is around 1 cm high and never leave a burning candle unattended.</p>
+                </div>
+            </div>
+
+            <div class="product-description-three">
+                <div class="product-description-trigger-three">
+                    <h5 class="product-description-title-three">Shipping & Return</h5>
+                </div>
+
+                <div class="product-description-dropdown-section-three">
+                    <p class="product-description-dropdown-three">Standard Shipping is $12.00 AUD in Australia and $30 USD in other countries.Free Shipping on all domestic orders over $200.
+                        If your item is faulty upon receipt or is not as described, we will gladly exchange the item or refund your credit card. All returns are subject to us receiving the item back within 7 days of purchase.</p>
+                </div>
+            </div>
+
+        </div>
+             <!--add to cart check out button-->
+        <div class="product-list-buttons">
+            <button class="add-to-cart" type="button" onclick="">Add to cart</button>
+            <button class="check-out" type="button" onclick="">Check out</button>
+        </div>
+
+    </div>
+
 </div>
 
 <section class="quick-cart-section">
