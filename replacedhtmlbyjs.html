@@ -220,3 +220,84 @@
         </div>
 
     </div>
+
+
+
+
+     <div class="cart-item-one">
+                <img class="cart-item-one-image" src="media/super-bloom-productpage.png" alt="the image of super bloom">
+
+                <div class="cart-item-right">
+                    <h3 class="cart-item-title">Super Bloom Candle</h3>
+                    <p class="cart-item-scents">Bulgarian Roses, Rose, Berries</p>
+
+                    <div class="cart-row-price-count">
+                        <h3 class="cart-item-price">$80</h3>
+                        <div class="quantity-count">
+                            <button class="cart-quantity-minus" type="button" name="minus" onclick>-</button>
+                            <input class="cart-quantity-input" type="number" name="quantity-in-cart" value="1" min="0">
+                            <button class="cart-quantity-plus" type="button" name="plus" onclick>+</button>
+                        </div>
+                    </div>
+
+                    <button class="remove" type="button" name="remove">Remove</button>
+                </div>
+            </div>
+
+            <div>2</div>
+            <div>3</div>
+
+
+
+
+
+//render delivery page
+function renderDeliveryPage() {
+
+  const container =
+    document.getElementById("delivery-products");
+
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  let subtotal = 0;
+
+  const totalQuantity =
+    cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  cart.forEach(item => {
+
+    subtotal += item.price * item.quantity;
+
+    container.innerHTML += `
+      <div class="product">
+
+        <div class="img-box">
+
+          <img
+            src="${item.imageProductpage || item.image}"
+            alt="${item.name}"
+          >
+
+          <div class="quantity">
+            ${item.quantity}
+          </div>
+
+        </div>
+
+        <div class="product-info">
+
+          <h2 class="delivery-product-name">
+            ${item.name}
+          </h2>
+
+          <h2 class="delivery-product-price">
+            $${item.price * item.quantity}
+          </h2>
+
+        </div>
+
+      </div>
+    `;
+  });

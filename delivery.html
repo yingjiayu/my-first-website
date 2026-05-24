@@ -17,19 +17,19 @@
     </nav>
 
 <main class="delivery-page-main">
-    <form action="" class="delivery-form">
+    <form action="confirmation.html" class="delivery-form">
 
         <p class="delivery-form-title">Contact</p>
-        <input type="text" name="email" placeholder="Email">
+        <input type="text" name="email" required placeholder="Email">
 
         <p class="delivery-form-title">Delivery</p>
         <div class="form-row">
-            <input class="address" type="text" name="address" placeholder="Address">
-            <input class="postcode" type="text" name="postcode" placeholder="Postcode">
+            <input class="address" type="text" name="address" required placeholder="Address">
+            <input class="postcode" type="text" name="postcode" required placeholder="Postcode">
         </div>
         <div class="form-row">
-            <input type="text" name="fristname" placeholder="First name">
-            <input type="text" name="lastname" placeholder="Last name">
+            <input type="text" name="fristname" required placeholder="First name">
+            <input type="text" name="lastname" required placeholder="Last name">
         </div>
 
         <p class="delivery-form-title">Payment</p>
@@ -37,42 +37,31 @@
                 <h4 class="card">Credit card</p>
             </div>
             <div class="form-payment-box-input">
-                <input type="text" name="cardnumber" placeholder="Card number">
+                <input type="text" name="cardnumber" required placeholder="Card number">
                 <div class="form-row">
                     <input type="text" name="expireddate" required placeholder="Expired date">
-                    <input type="text" name="security number" placeholder="Security code" >
+                    <input type="text" name="security number" required placeholder="Security code" >
                 </div>
-                <input type="text" name="name" placeholder="Name on card">
+                <input type="text" name="name" required placeholder="Name on card">
             </div>
 
             <p class="delivery-form-title">Mobile number</p>
-            <input type="text" name="mobilenumber" placeholder="+61">
+            <input type="text" name="mobilenumber" required placeholder="+61">
         
         <div class="delivery-page-button">
-            <button class="payment-button" type="submit" onclick>Pay now</button>
+            <button class="payment-button" type="submit">Pay now</button>
         </div>
     </form>
 
     <div class="delivery-right">
-        
-        <div class="product">
-            <div class="img-box">
-                <img src="media/super-bloom-productpage.png" alt="the image of super bloom candle">
-                <div class="quantity">1</div>
-            </div>
-    
-            <div class="product-info">
-                <h2 class="delivery-product-name">Super Bloom Candle</h2>
-                <h2 class="delivery-product-price">$80</h2>
-            </div>
-
+        <div id="delivery-products">
         </div>
 
         <div class="total-section">
 
             <div class="subtotal-box">
-                <h4 class="subtotal-box-text">Subtotal (<span class="total-quantity">3</span> items)</h4>
-                <h4 class="subtotal-box-price">$<span class="delivery-subtotal-price">240</span></h4>
+                <h4 class="subtotal-box-text">Subtotal (<span class="total-quantity">0</span> items)</h4>
+                <h4 class="subtotal-box-price">$<span class="delivery-subtotal-price">0</span></h4>
             </div>
             <div class="shipping-box">
                 <h4 class="subtotal-shipping">Shipping</h4>
@@ -80,7 +69,7 @@
             </div>
             <div class="total-price-box">
                 <h2 class="delivery-page-total">Total</h2>
-                <h2 class="delivery-page-total-price">$<span class="delivery-page-total-price">240</span></h2>
+                <h2 class="delivery-page-total-price">$<span class="delivery-page-total-price-number">0</span></h2>
             </div>
 
         </div>

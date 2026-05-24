@@ -40,30 +40,7 @@
             </p>
         </div>
 
-        <div class="cart-items" id="cart-items">
-
-            <div class="cart-item-one">
-                <img class="cart-item-one-image" src="media/super-bloom-productpage.png" alt="the image of super bloom">
-
-                <div class="cart-item-right">
-                    <h3 class="cart-item-title">Super Bloom Candle</h3>
-                    <p class="cart-item-scents">Bulgarian Roses, Rose, Berries</p>
-
-                    <div class="cart-row-price-count">
-                        <h3 class="cart-item-price">$80</h3>
-                        <div class="quantity-count">
-                            <button class="cart-quantity-minus" type="button" name="minus" onclick>-</button>
-                            <input class="cart-quantity-input" type="number" name="quantity-in-cart" value="1" min="0">
-                            <button class="cart-quantity-plus" type="button" name="plus" onclick>+</button>
-                        </div>
-                    </div>
-
-                    <button class="remove" type="button" name="remove">Remove</button>
-                </div>
-            </div>
-
-            <div>2</div>
-            <div>3</div>
+        <div id="cart-items" class="cart-items">
         </div>
     </div>
 
@@ -77,8 +54,8 @@
         <textarea class="order-notes" name="order-notes" rows="4" placeholder="Order notes"></textarea>
 
         <div class="cart-page-buttons">
-            <button type="button" class="cart-right-check-out">Check out</button>
-            <button type="button" class="cart-right-continue-shopping">Continue shopping</button>
+            <button type="button" class="cart-right-check-out" onclick="window.location.href='delivery.html'">Check out</button>
+            <button type="button" class="cart-right-continue-shopping" onclick="window.location.href='productlists.html'">Continue shopping</button>
         </div>
     </div>
 

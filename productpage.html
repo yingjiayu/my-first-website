@@ -24,7 +24,7 @@
             <div class="nav-right">
                 <li class="nav-item-right">search</li>
                 <li class="nav-item-right">login</li>
-                <li class="nav-item-right">cart</li>
+                <li id="nav-cart" class="nav-item-right">cart</li>
             </div>
         </ul>
 </nav>
@@ -44,28 +44,6 @@
 
         <div class="quick-cart-items" id="cart-items"></div>
 
-          <!--<div class="quick-cart-item-one">
-                <img class="quick-cart-item-one-image" src="media/super-bloom-productpage.png" alt="the image of super bloom">
-
-                <div class="quick-cart-item-right">
-                    <div class="quick-cart-item-info">
-                        <h3 class="quick-cart-item-title">Super Bloom Candle</h3>
-                        <p class="quick-cart-item-scents">Bulgarian Roses, Rose, Berries</p>
-                    </div>
-
-                    <div class="quick-cart-row-price-count">
-                        <h3 class="quick-cart-item-price">$80</h3>
-                        <div class="quick-quantity-count">
-                            <button class="quick-cart-quantity-minus" type="button" name="minus" onclick>-</button>
-                            <input class="quick-cart-quantity-input" type="number" name="quantity-in-cart" value="1" min="0">
-                            <button class="quick-cart-quantity-plus" type="button" name="plus" onclick>+</button>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-            <p>2</p>-->
 
         <div class="quick-cart-subtotal">
             <div class="quick-cart-right-subtotal">
@@ -77,8 +55,8 @@
             <textarea class="quick-order-notes" name="order-notes" rows="4" placeholder="Order notes"></textarea>
 
             <div class="quick-cart-page-buttons">
-                <button type="button" class="quick-cart-right-check-out">Check out</button>
-                <button type="button" class="quick-cart-right-continue-shopping">Continue shopping</button>
+                <button type="button" class="quick-cart-right-check-out" onclick="window.location.href='cart.html'">Check out</button>
+                <button type="button" class="quick-cart-right-continue-shopping" onclick="window.location.href='productlists.html'">Continue shopping</button>
             </div>
         </div>
 

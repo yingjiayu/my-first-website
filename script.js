@@ -17,6 +17,7 @@ const dataSystem = {
       image: "media/highlands.png",
       rating: "(4.8)",
       scents: ["Smoky", "Woody"],
+      collection: "australian landscape",
       description: "Black Pepper, Patchouli, Leather",
 
       imageProductpage:"media/highlands-productpage.png",
@@ -37,9 +38,8 @@ const dataSystem = {
       price: 80,
       image: "media/st-nicholas.png",
       rating: "(5.0)",
-      scents: ["smoky", "Woody", "seasonal"],
-      collection: "australian landscape",
-      description: "Fir, Smoke, Pine",
+      scents: ["smoky", "Woody", "seasonal", "seasonal candles"],
+      description: "Fir Needles, Smoke, Ash, Pine, Cedar",
       
       imageProductpage:"media/st-nicholas-productpage.png",
       imageProductbottom:"media/st-nicholas-productpage1.png",
@@ -87,7 +87,8 @@ const dataSystem = {
       image: "media/super-bloom.png",
       rating: "(5.0)",
       scents: ["floral"],
-      description: "Roses",
+      collection:"the rouge matte collection",
+      description: "Bulgarian Roses, Rose, Berries",
 
       imageProductpage:"media/super-bloom-productpage.png",
       imageProductbottom:"media/super-bloom-productpage1.png",
@@ -108,6 +109,7 @@ const dataSystem = {
       image: "media/roseofoz.png",
       rating: "(5.0)",
       scents: ["floral"],
+      collection:"the rouge matte collection",
       description: "Rose Patchouli"
     },
     {
@@ -156,6 +158,277 @@ const filterState = {
   collection: null
 };
 
+function loadCart() {
+  const data = localStorage.getItem("cart");
+  return data ? JSON.parse(data) : [];
+}
+
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+let cart = loadCart();
+
+function updateCartUI() {
+
+  const totalQuantity =
+    cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  const navCart =
+    document.getElementById("nav-cart");
+
+  // nav cart text
+  if (totalQuantity > 0) {
+    navCart.innerText = `cart (${totalQuantity})`;
+  } else {
+    navCart.innerText = "cart";
+  }
+
+
+
+  // quick cart number
+
+document.getElementById(
+  "quick-cart-number-current"
+).innerText = totalQuantity;
+
+  // open quick cart
+  const quickCart =
+    document.querySelector(".quick-cart-section");
+
+  quickCart.classList.add("active");
+
+  // render items
+  const cartItems =
+    document.getElementById("cart-items");
+
+  cartItems.innerHTML = "";
+
+  let subtotal = 0;
+
+  cart.forEach(item => {
+
+    subtotal += item.price * item.quantity;
+
+    cartItems.innerHTML += `
+      <div class="quick-cart-item-one">
+
+        <img class="quick-cart-item-one-image" src="${item.imageProductpage || item.image}" alt="${item.name}">
+        <div class="quick-cart-item-right">
+          <div class="quick-cart-item-info">
+            <h3 class="quick-cart-item-title">${item.name}</h3>
+            <p class="quick-cart-item-scents">${item.description}</p>
+          </div>
+
+          <div class="quick-cart-row-price-count">
+            <h3 class="quick-cart-item-price">$${item.price}</h3>
+            <div class="quick-quantity-count">
+              <button class="quick-cart-quantity-minus" type="button" onclick="decreaseQuantity(${item.id})">
+                -
+              </button>
+
+              <input class="quick-cart-quantity-input" type="number" value="${item.quantity}" readonly>
+              <button class="quick-cart-quantity-plus" type="button" onclick="addQuantity(${item.id})">
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  // subtotal
+  document.getElementById(
+    "cart-right-subtotal-count"
+  ).innerText = subtotal;
+
+  // free shipping
+  const freeShipping =
+    document.getElementById("quick-cart-free-shipping");
+
+  const freeLimit = 200;
+  const remaining = freeLimit - subtotal;
+
+  if (remaining > 0) {
+    freeShipping.innerText =
+      `$${remaining} away from FREE shipping`;
+  } else {
+    freeShipping.innerText =
+      "You unlocked FREE shipping!";
+  }
+}
+
+function addtoCart() {
+
+  document.addEventListener("click", (e) => {
+
+    const btn = e.target.closest(".add-to-cart");
+    if (!btn) return;
+
+    const productId =
+      Number(new URLSearchParams(window.location.search).get("id"));
+
+    const product =
+      dataSystem.products.find(p => p.id === productId);
+
+    const existing = cart.find(item => item.id === product.id);
+
+    if (existing) {
+     existing.quantity += 1;
+     } else {
+    cart.push({ ...product, quantity: 1 });
+    }
+
+    saveCart();
+    updateCartUI();
+  }); 
+}
+
+function addQuantity(id) {
+
+  const item = cart.find(p => p.id === id);
+  if (!item) return;
+
+  item.quantity++;
+  saveCart();
+  updateCartUI();
+}
+
+function decreaseQuantity(id) {
+
+  const item = cart.find(p => p.id === id);
+  if (!item) return;
+
+  item.quantity--;
+
+if (item.quantity <= 0) {
+  const index = cart.findIndex(p => p.id === id);
+  cart.splice(index, 1);
+}
+
+saveCart();
+updateCartUI();
+}
+
+if (document.getElementById("product-page")) {
+
+  renderProductPage();
+
+  addtoCart();
+
+}
+
+//cart page
+function renderCartPage() {
+  const container = document.getElementById("cart-items");
+
+  container.innerHTML = "";
+
+  const totalQuantity =
+  cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  document.getElementById(
+    "cart-number-current"
+  ).innerText = totalQuantity;
+
+  let subtotal = 0;
+
+  cart.forEach(item => {
+    subtotal += item.price * item.quantity;
+    container.innerHTML += `
+      <div class="cart-item-one">
+        <img class="cart-item-one-image" src="${item.imageProductpage || item.image}" />
+
+        <div class="cart-item-right">
+          <h3 class="cart-item-title">${item.name}</h3>
+          <p class="cart-item-scents">${item.description}</p>
+
+          <div class="cart-row-price-count">
+            <h3 class="cart-item-price">$${item.price}</h3>
+            <div class="quantity-count">
+                <button class="cart-quantity-minus" onclick="decreaseQuantity(${item.id})">-</button>
+                <input  class="cart-quantity-input" value="${item.quantity}" readonly>
+                <button class="cart-quantity-plus" onclick="addQuantity(${item.id})">+</button>
+            </div>
+          </div>
+          <button class="remove" name="remove">Remove</button>
+        </div>
+      </div>
+    `;
+  });
+
+  document.getElementById("cart-right-subtotal-count").innerText = subtotal;
+
+  const freeLimit = 200;
+  const remaining = freeLimit - subtotal;
+
+  const shipping = document.getElementById("cart-free-shipping");
+
+  shipping.innerText =
+    remaining > 0
+      ? `$${remaining} away from FREE shipping`
+      : "You unlocked FREE shipping!";
+}
+
+//render delivery page
+function renderDeliveryPage() {
+
+  const container =
+    document.getElementById("delivery-products");
+
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  let subtotal = 0;
+
+  const totalQuantity =
+    cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  cart.forEach(item => {
+
+    subtotal += item.price * item.quantity;
+
+    container.innerHTML += `
+      <div class="product">
+        <div class="img-box">
+          <img src="${item.imageProductpage || item.image}" alt="${item.name}">
+          <div class="quantity">${item.quantity}</div>
+        </div>
+
+        <div class="product-info">
+          <h2 class="delivery-product-name">${item.name}</h2>
+          <h2 class="delivery-product-price">$${item.price * item.quantity}</h2>
+        </div>
+        
+
+      </div>
+    `;
+  });
+
+  // subtotal
+  document.querySelector(
+    ".delivery-subtotal-price"
+  ).innerText = subtotal;
+
+  // total quantity
+  document.querySelector(
+    ".total-quantity"
+  ).innerText = totalQuantity;
+
+  // shipping
+  let shipping = subtotal >= 200 ? 0 : 15;
+
+  document.querySelector(
+    ".total-shipping"
+  ).innerText = shipping;
+
+  // total
+  document.querySelector(
+    ".delivery-page-total-price-number"
+  ).innerText = subtotal + shipping;
+}
 
 // adapt filter information
 function normalize(str) {
@@ -173,17 +446,40 @@ function matchesScent(product, scent) {
 
 // main filter function
 function applyFilter() {
-  let result = dataSystem.products;
 
-  if (filterState.scent) {
+  const params = new URLSearchParams(window.location.search);
+
+  const scent = params.get("scent");
+  const search = params.get("search");
+  const collection = params.get("collection");
+
+  let result = [...dataSystem.products];
+
+  // scent
+  if (scent) {
     result = result.filter(p =>
-      matchesScent(p, filterState.scent)
+      matchesScent(p, scent)
     );
   }
 
-  if (filterState.collection) {
+  // collection
+  if (collection) {
     result = result.filter(p =>
-      normalize(p.collection || "") === filterState.collection
+      normalize(p.collection || "") === normalize(collection)
+    );
+  }
+
+  // search
+  if (search) {
+    const q = normalize(search);
+
+    result = result.filter(p =>
+      normalize(p.name).includes(q) ||
+      normalize(p.description).includes(q) ||
+      (p.scents && p.scents.some(s =>
+        normalize(s).includes(q)
+      )) ||
+      normalize(p.collection || "").includes(q)
     );
   }
 
@@ -204,10 +500,17 @@ document.querySelectorAll(".dropdown-column-li")
 // collection filters
 document.querySelectorAll(".filter-collection-li")
   .forEach(li => {
+
     li.addEventListener("click", () => {
-      filterState.collection = normalize(li.innerText);
-      applyFilter();
+      const collection =
+        normalize(li.innerText);
+      const params =
+        new URLSearchParams(window.location.search);
+      params.set("collection", collection);
+      window.location.href =
+        `productlists.html?${params.toString()}`;
     });
+
   });
 
 
@@ -480,12 +783,30 @@ function dropdownSection(whichSection, triggerPart) {
   });
 }
 
+//search function
+function searchFunction() {
+  const input = document.getElementById("search-input");
+  if (!input) return;
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+
+    e.preventDefault();
+
+    const query = normalize(input.value);
+
+    if (!query) return;
+
+    window.location.href =
+      `productlists.html?search=${encodeURIComponent(query)}`;
+  });
+}
+
 // init
 document.addEventListener("DOMContentLoaded", () => {
 
-  // =========================
-  // homepage filters
-  // =========================
+  searchFunction();
+// homepage filters
 
   document.querySelectorAll(".dropdown-column-li")
     .forEach(li => {
@@ -501,10 +822,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
-  // =========================
-  // collection filters
-  // =========================
+// collection filters
 
   document.querySelectorAll(".filter-collection-li")
     .forEach(li => {
@@ -520,29 +838,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
-  // =========================
-  // product list page
-  // =========================
+// product list page
 
   if (document.getElementById("product-list")) {
 
-    const params =
-      new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.search);
 
-    const scent = params.get("scent");
+  const scent = params.get("scent");
+  const search = params.get("search");
 
-    if (scent) {
-      filterState.scent = normalize(scent);
-    }
-
-    applyFilter();
+  // scent filter
+  if (scent) {
+    filterState.scent = normalize(scent);
   }
 
+  // search filter
+  if (search) {
+    filterState.search = normalize(search);
+  }
 
-  // =========================
-  // product page
-  // =========================
+  applyFilter();
+}
+
+// product page
 
   if (document.getElementById("product-page")) {
 
@@ -563,11 +881,7 @@ document.addEventListener("DOMContentLoaded", () => {
       '.product-description-trigger-three'
     );
   }
-
-
-  // =========================
-  // global dropdowns
-  // =========================
+// global dropdowns
 
   dropdownSection(
     '.shop-dropdown',
@@ -584,5 +898,27 @@ document.addEventListener("DOMContentLoaded", () => {
     '.filter-collection-title'
   );
 
+  dropdownSection(
+    '.search-dropdown',
+    '.nav-item-left-search'
+  );
+
+  cart = loadCart();
+
+  if (document.getElementById("cart-items")) {
+
+    renderCartPage();
+
+  }
+
+  if (document.getElementById("delivery-products")) {
+
+  renderDeliveryPage();
+
+}
+
+  updateCartUI();
+
 });
+
 
