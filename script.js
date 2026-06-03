@@ -151,65 +151,51 @@ const dataSystem = {
   ]
 };
 
-
-// filter state
+// filter state    //store defualt scent and collection, in order to get the clicked scent and collection
 const filterState = {
   scent: null,
   collection: null
 };
 
 function loadCart() {
-  const data = localStorage.getItem("cart");
-  return data ? JSON.parse(data) : [];
+  const data = localStorage.getItem("cart"); //from local storage in browser to get cart
+  return data ? JSON.parse(data) : []; //change strings to data, if there are something in the cart, return to data, if nothing in the cart, return to []
 }
 
 function saveCart() {
-  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem("cart", JSON.stringify(cart)); //save cart's content into local storage (browser), stringify=from data to string
 }
 
-let cart = loadCart();
+let cart = loadCart(); //when open the new page, will find the previous cart info.
 
+
+//set cart ui
 function updateCartUI() {
+  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0); //current total quantity: sum: last time's sum quantity, item.quantity: current added quantity, last time's quantity add current added quantity from 0
+  const navCart = document.getElementById("nav-cart");
 
-  const totalQuantity =
-    cart.reduce((sum, item) => sum + item.quantity, 0);
-
-  const navCart =
-    document.getElementById("nav-cart");
-
-  // nav cart text
+  // nav cart quantity
   if (totalQuantity > 0) {
     navCart.innerText = `cart (${totalQuantity})`;
   } else {
     navCart.innerText = "cart";
   }
 
+// quick cart number
+  document.getElementById("quick-cart-number-current").innerText = totalQuantity;
 
+// open quick cart
+  const quickCart =document.querySelector(".quick-cart-section");
+  quickCart.classList.add("active"); //set active status to open the quick cart
 
-  // quick cart number
+// render items
+  const cartItems =document.getElementById("cart-items");
+  cartItems.innerHTML = ""; //redraw all items
+//count subtotal
+  let subtotal = 0; 
 
-document.getElementById(
-  "quick-cart-number-current"
-).innerText = totalQuantity;
-
-  // open quick cart
-  const quickCart =
-    document.querySelector(".quick-cart-section");
-
-  quickCart.classList.add("active");
-
-  // render items
-  const cartItems =
-    document.getElementById("cart-items");
-
-  cartItems.innerHTML = "";
-
-  let subtotal = 0;
-
-  cart.forEach(item => {
-
-    subtotal += item.price * item.quantity;
-
+cart.forEach(item => {
+  subtotal += item.price * item.quantity;
     cartItems.innerHTML += `
       <div class="quick-cart-item-one">
 
@@ -239,57 +225,52 @@ document.getElementById(
   });
 
   // subtotal
-  document.getElementById(
-    "cart-right-subtotal-count"
-  ).innerText = subtotal;
+  document.getElementById("cart-right-subtotal-count").innerText = subtotal;
 
   // free shipping
-  const freeShipping =
-    document.getElementById("quick-cart-free-shipping");
+  const freeShipping =document.getElementById("quick-cart-free-shipping");
 
   const freeLimit = 200;
   const remaining = freeLimit - subtotal;
 
   if (remaining > 0) {
-    freeShipping.innerText =
-      `$${remaining} away from FREE shipping`;
+    freeShipping.innerText = `$${remaining} away from FREE shipping`;
   } else {
-    freeShipping.innerText =
-      "You unlocked FREE shipping!";
+    freeShipping.innerText = "You unlocked FREE shipping!";
   }
 }
 
 function addtoCart() {
-
-  document.addEventListener("click", (e) => {
-
-    const btn = e.target.closest(".add-to-cart");
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".add-to-cart"); //if user clicked add to cart
     if (!btn) return;
+  
+  //Read the current product id from the current website address
+  const productId = Number(new URLSearchParams(window.location.search).get("id"));//let cart know which item you added to cart: first, know the product page, next, know the product id
 
-    const productId =
-      Number(new URLSearchParams(window.location.search).get("id"));
+  //find the current product from the data system
+  const product = dataSystem.products.find(p => p.id === productId);
 
-    const product =
-      dataSystem.products.find(p => p.id === productId);
-
-    const existing = cart.find(item => item.id === product.id);
-
+  //if there is this product inside
+  const existing = cart.find(item => item.id === product.id);
     if (existing) {
      existing.quantity += 1;
      } else {
     cart.push({ ...product, quantity: 1 });
     }
 
-    saveCart();
-    updateCartUI();
+  saveCart();
+  updateCartUI();
   }); 
 }
 
 function addQuantity(id) {
 
+  //find this id in cart
   const item = cart.find(p => p.id === id);
   if (!item) return;
 
+  //item.quantity = item.quantity + 1;
   item.quantity++;
   saveCart();
   updateCartUI();
@@ -304,17 +285,15 @@ function decreaseQuantity(id) {
 
 if (item.quantity <= 0) {
   const index = cart.findIndex(p => p.id === id);
-  cart.splice(index, 1);
+  cart.splice(index, 1); //if index=1, and the quantity is 0, then delete this item in cart
 }
 
 saveCart();
 updateCartUI();
 }
 
-if (document.getElementById("product-page")) {
-
+if (document.getElementById("product-page")) { //only run in this id
   renderProductPage();
-
   addtoCart();
 
 }
@@ -322,19 +301,15 @@ if (document.getElementById("product-page")) {
 //cart page
 function renderCartPage() {
   const container = document.getElementById("cart-items");
-
   container.innerHTML = "";
 
-  const totalQuantity =
-  cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  document.getElementById(
-    "cart-number-current"
-  ).innerText = totalQuantity;
+  document.getElementById("cart-number-current").innerText = totalQuantity;
 
   let subtotal = 0;
 
-  cart.forEach(item => {
+  cart.forEach(item => { 
     subtotal += item.price * item.quantity;
     container.innerHTML += `
       <div class="cart-item-one">
@@ -374,20 +349,15 @@ function renderCartPage() {
 //render delivery page
 function renderDeliveryPage() {
 
-  const container =
-    document.getElementById("delivery-products");
-
+  const container = document.getElementById("delivery-products");
   if (!container) return;
-
   container.innerHTML = "";
 
   let subtotal = 0;
 
-  const totalQuantity =
-    cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   cart.forEach(item => {
-
     subtotal += item.price * item.quantity;
 
     container.innerHTML += `
@@ -408,39 +378,30 @@ function renderDeliveryPage() {
   });
 
   // subtotal
-  document.querySelector(
-    ".delivery-subtotal-price"
-  ).innerText = subtotal;
+  document.querySelector(".delivery-subtotal-price").innerText = subtotal;
 
   // total quantity
-  document.querySelector(
-    ".total-quantity"
-  ).innerText = totalQuantity;
+  document.querySelector(".total-quantity").innerText = totalQuantity;
 
   // shipping
-  let shipping = subtotal >= 200 ? 0 : 15;
-
-  document.querySelector(
-    ".total-shipping"
-  ).innerText = shipping;
+  let shipping = subtotal >= 200 ? 0 : 15; //if subtotal >=200, shipping=0, else, shipping=15
+  document.querySelector(".total-shipping").innerText = shipping;
 
   // total
-  document.querySelector(
-    ".delivery-page-total-price-number"
-  ).innerText = subtotal + shipping;
+  document.querySelector(".delivery-page-total-price-number").innerText = subtotal + shipping;
 }
 
 // adapt filter information
 function normalize(str) {
-  return str.toLowerCase().replace(/\s+/g, " ").trim();
+  return str.toLowerCase().replace(/\s+/g, " ").trim(); //unify the format of text
 }
 
 function matchesScent(product, scent) {
-  if (!Array.isArray(product.scents)) return false;
+  if (!Array.isArray(product.scents)) return false; //if array is not an array, return false
 
   return product.scents
-    .map(s => normalize(s))
-    .includes(normalize(scent));
+    .map(s => normalize(s)) //process each item in the array one by one and then generate a new array
+    .includes(normalize(scent)); // matches users input
 }
 
 
@@ -451,34 +412,25 @@ function applyFilter() {
 
   const scent = params.get("scent");
   const search = params.get("search");
-  const collection = params.get("collection");
+  const collection = params.get("collection"); //find this product's scent
 
   let result = [...dataSystem.products];
 
   // scent
   if (scent) {
-    result = result.filter(p =>
-      matchesScent(p, scent)
-    );
+    result = result.filter(p => matchesScent(p, scent));
   }
 
   // collection
   if (collection) {
-    result = result.filter(p =>
-      normalize(p.collection || "") === normalize(collection)
-    );
+    result = result.filter(p => normalize(p.collection || "") === normalize(collection));
   }
 
   // search
   if (search) {
     const q = normalize(search);
 
-    result = result.filter(p =>
-      normalize(p.name).includes(q) ||
-      normalize(p.description).includes(q) ||
-      (p.scents && p.scents.some(s =>
-        normalize(s).includes(q)
-      )) ||
+    result = result.filter(p => normalize(p.name).includes(q) || normalize(p.description).includes(q) || (p.scents && p.scents.some(s => normalize(s).includes(q))) ||
       normalize(p.collection || "").includes(q)
     );
   }
@@ -492,25 +444,19 @@ document.querySelectorAll(".dropdown-column-li")
   .forEach(li => {
     li.addEventListener("click", () => {
   const scent = normalize(li.innerText);
-  window.location.href =
-    `productlists.html?scent=${encodeURIComponent(scent)}`;
+  window.location.href = `productlists.html?scent=${encodeURIComponent(scent)}`;
     });
   });
 
 // collection filters
 document.querySelectorAll(".filter-collection-li")
   .forEach(li => {
-
     li.addEventListener("click", () => {
-      const collection =
-        normalize(li.innerText);
-      const params =
-        new URLSearchParams(window.location.search);
-      params.set("collection", collection);
-      window.location.href =
-        `productlists.html?${params.toString()}`;
+      const collection = normalize(li.innerText); //get text in li
+      const params = new URLSearchParams(window.location.search);
+      params.set("collection", collection); //change the collection of page link to current one which you clicked
+      window.location.href = `productlists.html?${params.toString()}`;
     });
-
   });
 
 
@@ -519,7 +465,9 @@ function renderProducts(products) {
 
   const list = document.getElementById("product-list");
         list.innerHTML = "";
+
   let rowEachproducts = "";
+
   products.forEach((product, index) => {
     // clickable products
     if(product.id === 2 || product.id === 3 || product.id === 7){
@@ -625,12 +573,9 @@ function renderProducts(products) {
 function renderProductPage() {
   const params = new URLSearchParams(window.location.search);
   const productId = Number(params.get("id"));
-  const product = dataSystem.products.find(
-    p => p.id === productId
-  );
-  if (!product) return;
-  const productPageinfo =
-    document.getElementById("product-page");
+  const product = dataSystem.products.find(p => p.id === productId);
+        if (!product) return;
+  const productPageinfo = document.getElementById("product-page");
   productPageinfo.innerHTML = `
     <div class="product-image-section">
 
@@ -787,8 +732,8 @@ function dropdownSection(whichSection, triggerPart) {
 function searchFunction() {
   const input = document.getElementById("search-input");
   if (!input) return;
-
-  input.addEventListener("keydown", (e) => {
+  
+  input.addEventListener("keydown", (e) => { 
     if (e.key !== "Enter") return;
 
     e.preventDefault();
@@ -803,9 +748,10 @@ function searchFunction() {
 }
 
 // init
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => { //after 
 
   searchFunction();
+
 // homepage filters
 
   document.querySelectorAll(".dropdown-column-li")
@@ -920,5 +866,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCartUI();
 
 });
+
 
 
