@@ -24,7 +24,30 @@
             <div class="nav-right">
                 <li class="nav-item-right">search</li>
                 <li class="nav-item-right">login</li>
-                <li id="nav-cart" class="nav-item-right">cart</li>
+                <li class="nav-item-right">
+                    <span id="nav-cart">cart</span>
+                    <section class="quick-cart-section">
+                        <div class="quick-cart-shipping-and-quantity">
+                            <p class="quick-cart-afteradding-number">
+                            CART ( <span id="quick-cart-number-current">0</span> )
+                            </p>
+                            <p id="quick-cart-free-shipping" class="quick-cart-free-shipping">free shipping info</p>
+                        </div>
+                        <div class="quick-cart-items" id="quick-cart-items"></div>
+                        <div class="quick-cart-subtotal">
+                            <div class="quick-cart-right-subtotal">
+                                <h2 class="quick-cart-right-subtotal-text">Subtotal</h2>
+                                <h2 class="quick-cart-right-subtotal-price">$<span id="cart-right-subtotal-count">0</span></h2>
+                            </div>
+                            <p class="quick-cart-right-tax">Tax included. Shipping calculated at checkout.</p>
+                            <textarea class="quick-order-notes" name="order-notes" rows="4" placeholder="Order notes"></textarea>
+                            <div class="quick-cart-page-buttons">
+                                <button type="button" class="quick-cart-right-check-out" onclick="window.location.href='cart.html'">Check out</button>
+                                <button type="button" class="quick-cart-right-continue-shopping" onclick="window.location.href='productlists.html'">Continue shopping</button>
+                            </div>
+                        </div>
+                    </section>
+                </li>
             </div>
         </ul>
 </nav>
@@ -32,35 +55,6 @@
 <main>
 <div id="product-page" class="product-information-layout">
 </div>
-
-<section class="quick-cart-section">
-
-        <div class="quick-cart-shipping-and-quantity">
-            <p class="quick-cart-afteradding-number">
-            CART ( <span id="quick-cart-number-current">0</span> )
-            </p>
-            <p id="quick-cart-free-shipping" class="quick-cart-free-shipping">free shipping info</p>
-        </div>
-
-        <div class="quick-cart-items" id="cart-items"></div>
-
-
-        <div class="quick-cart-subtotal">
-            <div class="quick-cart-right-subtotal">
-                <h2 class="quick-cart-right-subtotal-text">Subtotal</h2>
-                <h2 class="quick-cart-right-subtotal-price">$<span id="cart-right-subtotal-count">0</span></h2>
-            </div>
-            <p class="quick-cart-right-tax">Tax included. Shipping calculated at checkout.</p>
-
-            <textarea class="quick-order-notes" name="order-notes" rows="4" placeholder="Order notes"></textarea>
-
-            <div class="quick-cart-page-buttons">
-                <button type="button" class="quick-cart-right-check-out" onclick="window.location.href='cart.html'">Check out</button>
-                <button type="button" class="quick-cart-right-continue-shopping" onclick="window.location.href='productlists.html'">Continue shopping</button>
-            </div>
-        </div>
-
-</section>
 
 <!--feedback-->
 <div class="feedback">
@@ -118,7 +112,7 @@
     <h2 class="recommendations-title">Recommendations for you</h2>
     <div class="recommendations-product-cards">
 
-        <a class="recommendations-card" href="">
+        <div class="recommendations-card">
             <img class="recommendations-card-image" src="media/agape.png" alt="the image of agape candle">
             <div class="recommendations-text">
                 <div class="recommendations-card-textandrating">
@@ -126,11 +120,11 @@
                     <span class="recommendations-card-rating">(5.0)</span>
                 </div>
                 <p class="recommendations-card-info">oakwood, moss, leather, patchouli</p>
-                <p class="recommendations-card-prices">$80</p>
+                <p class="recomxmendations-card-prices">$80</p>
             </div>
-        </a>
+        </div>
 
-         <a class="recommendations-card" href="">
+         <div class="recommendations-card">
             <img class="recommendations-card-image" src="media/fig-tree.png" alt="the image of Fig Tree Candle">
             <div class="recommendations-text">
                 <div class="recommendations-card-textandrating">
@@ -140,9 +134,9 @@
                 <p class="recommendations-card-info">Fresh/green fig, Blackcurrant leaves</p>
                 <p class="recommendations-card-prices">$80</p>
             </div>
-        </a>
+        </div>
 
-        <a class="recommendations-card" href="">
+        <div class="recommendations-card">
             <img class="recommendations-card-image" src="media/293.png" alt="the image of 293 Candle">
             <div class="recommendations-text">
                 <div class="recommendations-card-textandrating">
@@ -152,14 +146,14 @@
                 <p class="recommendations-card-info">Bergamot, Grapefruit</p>
                 <p class="recommendations-card-prices">$80</p>
             </div>
-        </a>
+        </div>
     </div>
 </div>
 </main>
 
 <!--footer-->
 <footer>
-
+    <div class="footer-section-without-copyrights">
     <div class="footer-sections">
         <div class="help">
             <h4 class="footer-title">Help</h4>
@@ -173,7 +167,6 @@
                 <li class="footer-list">CONTACT</li>
                 <li class="footer-list">PRIVACY POLICY</li>
             </ul>
-            <p class="footer-copyrights">© 2026 SOH Melbourne. All rights reserved.</p>
         </div>
 
         <div class="followus">
@@ -195,6 +188,10 @@
             <button class="subscribe-button" type="submit">Subscribe</button>
         </form>
     </div>
+    
+    </div>
+
+    <p class="footer-copyrights">© 2026 SOH Melbourne. All rights reserved.</p>
 </footer>
 
 

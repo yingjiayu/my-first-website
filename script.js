@@ -171,35 +171,37 @@ let cart = loadCart(); //when open the new page, will find the previous cart inf
 
 //set cart ui
 function updateCartUI() {
-  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0); //current total quantity: sum: last time's sum quantity, item.quantity: current added quantity, last time's quantity add current added quantity from 0
-  const navCart = document.getElementById("nav-cart");
+  cart = loadCart();
 
-  // nav cart quantity
-  if (totalQuantity > 0) {
-    navCart.innerText = `cart (${totalQuantity})`;
-  } else {
-    navCart.innerText = "cart";
+  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  const navCart = document.getElementById("nav-cart");
+  if (navCart) {
+    navCart.innerText = totalQuantity > 0 ? `cart (${totalQuantity})` : "cart";
   }
 
-// quick cart number
-  document.getElementById("quick-cart-number-current").innerText = totalQuantity;
+  const quickCartNumber = document.getElementById("quick-cart-number-current");
+  if (quickCartNumber) {
+    quickCartNumber.innerText = totalQuantity;
+  }
 
-// open quick cart
-  const quickCart =document.querySelector(".quick-cart-section");
-  quickCart.classList.add("active"); //set active status to open the quick cart
+  const cartItems = document.getElementById("quick-cart-items");
 
-// render items
-  const cartItems =document.getElementById("cart-items");
-  cartItems.innerHTML = ""; //redraw all items
-//count subtotal
-  let subtotal = 0; 
+  if (!cartItems) {
+    return;
+  }
 
-cart.forEach(item => {
-  subtotal += item.price * item.quantity;
+  cartItems.innerHTML = "";
+
+  let subtotal = 0;
+
+  cart.forEach(item => {
+    subtotal += item.price * item.quantity;
+
     cartItems.innerHTML += `
       <div class="quick-cart-item-one">
-
         <img class="quick-cart-item-one-image" src="${item.imageProductpage || item.image}" alt="${item.name}">
+
         <div class="quick-cart-item-right">
           <div class="quick-cart-item-info">
             <h3 class="quick-cart-item-title">${item.name}</h3>
@@ -208,12 +210,14 @@ cart.forEach(item => {
 
           <div class="quick-cart-row-price-count">
             <h3 class="quick-cart-item-price">$${item.price}</h3>
+
             <div class="quick-quantity-count">
               <button class="quick-cart-quantity-minus" type="button" onclick="decreaseQuantity(${item.id})">
                 -
               </button>
 
               <input class="quick-cart-quantity-input" type="number" value="${item.quantity}" readonly>
+
               <button class="quick-cart-quantity-plus" type="button" onclick="addQuantity(${item.id})">
                 +
               </button>
@@ -224,44 +228,61 @@ cart.forEach(item => {
     `;
   });
 
-  // subtotal
-  document.getElementById("cart-right-subtotal-count").innerText = subtotal;
+  const subtotalText = document.getElementById("cart-right-subtotal-count");
+  if (subtotalText) {
+    subtotalText.innerText = subtotal;
+  }
 
-  // free shipping
-  const freeShipping =document.getElementById("quick-cart-free-shipping");
+  const freeShipping = document.getElementById("quick-cart-free-shipping");
+  if (freeShipping) {
+    const freeLimit = 200;
+    const remaining = freeLimit - subtotal;
 
-  const freeLimit = 200;
-  const remaining = freeLimit - subtotal;
-
-  if (remaining > 0) {
-    freeShipping.innerText = `$${remaining} away from FREE shipping`;
-  } else {
-    freeShipping.innerText = "You unlocked FREE shipping!";
+    if (remaining > 0) {
+      freeShipping.innerText = `$${remaining} away from FREE shipping`;
+    } else {
+      freeShipping.innerText = "You unlocked FREE shipping!";
+    }
   }
 }
 
 function addtoCart() {
-document.addEventListener("click", (e) => {
-  const btn = e.target.closest(".add-to-cart"); //if user clicked add to cart
-    if (!btn) return;
-  
-  //Read the current product id from the current website address
-  const productId = Number(new URLSearchParams(window.location.search).get("id"));//let cart know which item you added to cart: first, know the product page, next, know the product id
+  const btn = document.querySelector(".add-to-cart");
+  if (!btn) return;
 
-  //find the current product from the data system
-  const product = dataSystem.products.find(p => p.id === productId);
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
 
-  //if there is this product inside
-  const existing = cart.find(item => item.id === product.id);
+    const productId = Number(new URLSearchParams(window.location.search).get("id"));
+    const product = dataSystem.products.find(p => p.id === productId);
+    if (!product) return;
+
+    const existing = cart.find(item => item.id === product.id);
+
     if (existing) {
-     existing.quantity += 1;
-     } else {
-    cart.push({ ...product, quantity: 1 });
+      existing.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
     }
 
-  saveCart();
-  updateCartUI();
-  }); 
+    saveCart();
+    if (document.getElementById("quick-cart-items")) {
+
+    updateCartUI();
+
+  }
+
+  if (document.getElementById("cart-items")) {
+
+    renderCartPage();
+
+  }
+
+    const quickCart = document.querySelector(".quick-cart-section");
+    if (quickCart) {
+      quickCart.classList.add("active");
+    }
+  });
 }
 
 function addQuantity(id) {
@@ -273,7 +294,16 @@ function addQuantity(id) {
   //item.quantity = item.quantity + 1;
   item.quantity++;
   saveCart();
-  updateCartUI();
+    if (document.getElementById("quick-cart-items")) {
+
+    updateCartUI();
+
+  }
+
+  if (document.getElementById("cart-items")) {
+
+    renderCartPage();
+  }
 }
 
 function decreaseQuantity(id) {
@@ -289,14 +319,58 @@ if (item.quantity <= 0) {
 }
 
 saveCart();
-updateCartUI();
+  if (document.getElementById("quick-cart-items")) {
+
+    updateCartUI();
+
+  }
+
+  if (document.getElementById("cart-items")) {
+
+    renderCartPage();
+  }
 }
 
-if (document.getElementById("product-page")) { //only run in this id
-  renderProductPage();
-  addtoCart();
+function removeItem(id) {
 
+  cart = loadCart();
+
+  const index = cart.findIndex(item => item.id === id);
+
+  if (index === -1) return;
+
+  cart.splice(index, 1);
+
+  saveCart();
+
+  updateCartUI();
+
+  if (document.getElementById("cart-items")) {
+    renderCartPage();
+  }
 }
+
+function updateBreadcrumb() {
+  const current = document.getElementById("breadcrumb-current");
+  if (!current) return;
+
+  const params = new URLSearchParams(window.location.search);
+
+  const scent = params.get("scent");
+  const collection = params.get("collection");
+  const search = params.get("search");
+
+  if (scent) {
+    current.innerText = scent;
+  } else if (collection) {
+    current.innerText = collection;
+  } else if (search) {
+    current.innerText = `Search: ${search}`;
+  } else {
+    current.innerText = "All products";
+  }
+}
+
 
 //cart page
 function renderCartPage() {
@@ -327,7 +401,9 @@ function renderCartPage() {
                 <button class="cart-quantity-plus" onclick="addQuantity(${item.id})">+</button>
             </div>
           </div>
-          <button class="remove" name="remove">Remove</button>
+          <button class="remove" type="button" onclick="removeItem(${item.id})">
+          Remove
+          </button>
         </div>
       </div>
     `;
@@ -389,6 +465,8 @@ function renderDeliveryPage() {
 
   // total
   document.querySelector(".delivery-page-total-price-number").innerText = subtotal + shipping;
+
+  document.querySelector(".delivery-order-summary-total").innerText = subtotal + shipping;
 }
 
 // adapt filter information
@@ -468,6 +546,9 @@ function renderProducts(products) {
 
   let rowEachproducts = "";
 
+  const isMobile = window.matchMedia("(max-width: 390px)").matches;
+  const perRow = isMobile ? 2 : 3;
+
   products.forEach((product, index) => {
     // clickable products
     if(product.id === 2 || product.id === 3 || product.id === 7){
@@ -544,14 +625,12 @@ function renderProducts(products) {
       `;
     }
 
-    if ((index + 1) % 3 === 0) {
-
+    if ((index + 1) % perRow === 0) {
       list.innerHTML += `
         <div class="productlists-onerow">
           ${rowEachproducts}
         </div>
       `;
-
       rowEachproducts = "";
     }
 
@@ -702,7 +781,7 @@ function renderProductPage() {
           Add to cart
         </button>
 
-        <button class="check-out">
+        <button class="check-out" onclick="window.location.href='cart.html'">
           Check out
         </button>
 
@@ -721,8 +800,16 @@ function dropdownSection(whichSection, triggerPart) {
     e.stopPropagation();
     box.classList.toggle('active');
   });
+
+  box.addEventListener('click', (e) => {
+  e.stopPropagation();
+  });
+
   document.addEventListener('click', (e) => {
-    if (!box.contains(e.target)) {
+    if (
+      !box.contains(e.target) &&
+      !trigger.contains(e.target)
+    ) {
       box.classList.remove('active');
     }
   });
@@ -803,7 +890,10 @@ document.addEventListener("DOMContentLoaded", () => { //after
     filterState.search = normalize(search);
   }
 
+  updateBreadcrumb();
   applyFilter();
+
+  window.addEventListener('resize', applyFilter);
 }
 
 // product page
@@ -811,6 +901,7 @@ document.addEventListener("DOMContentLoaded", () => { //after
   if (document.getElementById("product-page")) {
 
     renderProductPage();
+    addtoCart();
 
     dropdownSection(
       '.product-description-one',
@@ -849,12 +940,13 @@ document.addEventListener("DOMContentLoaded", () => { //after
     '.nav-item-left-search'
   );
 
+  dropdownSection(".mobile-dropdown", ".burger-menu");
+
+  dropdownSection('.quick-cart-section','#nav-cart');
+
   cart = loadCart();
-
-  if (document.getElementById("cart-items")) {
-
-    renderCartPage();
-
+  if (document.getElementById("cart-number-current")) {
+  renderCartPage();
   }
 
   if (document.getElementById("delivery-products")) {

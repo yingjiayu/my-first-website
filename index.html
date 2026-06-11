@@ -16,9 +16,9 @@
 <!--nav-->
 <nav>
         <ul class="nav-menu">
+            <li class="burger-menu">☰</li>
             <li class="logo"><img src="media/logo.png" alt="soh logo"></li>
-            <li class="shop-dropdown"><span class="nav-item-left-shop">shop</span>
-
+            <li class="shop-dropdown nav-item-left"><span class="nav-item-left-shop">shop</span>
                 <div class="dropdown">
 
                     <div class="dropdown-column">
@@ -36,7 +36,7 @@
 
                     <div class="dropdown-column">
                         <h4 class="dropdown-column-title">Search by Collection</h4>
-                        <ul>
+                        <ul class="dropdown-column-ul">
                             <li class="dropdown-column-li">The Black Matte Collection</li>
                             <li class="dropdown-column-li">The White Matte Collection</li>
                             <li class="dropdown-column-li">The Navy Matte Collection</li>
@@ -55,7 +55,7 @@
             <li class="nav-item-left">candle care</li>
 
             <div class="nav-right">
-            <li class="search-dropdown"><span class="nav-item-left-search">search</span>
+                <li class="search-dropdown"><span class="nav-item-left-search">search</span>
 
                 <div class="search-dropdown-section">
                     <div class="insert-search">
@@ -65,18 +65,67 @@
 
                     <div class="suggestion-search">
                         <h6 class="suggestion-search-title">Suggestions</h6>
+                        <div>
                         <P class="suggestion-search-text">Floral candles</P>
                         <P class="suggestion-search-text">Woody candles</P>
                         <P class="suggestion-search-text">Seasonal candles</P>
+                        </div>
                     </div>
                 </div>
 
-            </li>
+                </li>
 
-            <li class="nav-item-right">login</li>
-            <li class="nav-item-right">cart</li>
+                <li class="nav-item-right">login</li>
+                <li class="nav-item-right">
+                    <span id="nav-cart">cart</span>
+                    <section class="quick-cart-section">
+                        <div class="quick-cart-shipping-and-quantity">
+                            <p class="quick-cart-afteradding-number">
+                            CART ( <span id="quick-cart-number-current">0</span> )
+                            </p>
+                            <p id="quick-cart-free-shipping" class="quick-cart-free-shipping">free shipping info</p>
+                        </div>
+                        <div class="quick-cart-items" id="quick-cart-items"></div>
+                        <div class="quick-cart-subtotal">
+                            <div class="quick-cart-right-subtotal">
+                                <h2 class="quick-cart-right-subtotal-text">Subtotal</h2>
+                                <h2 class="quick-cart-right-subtotal-price">$<span id="cart-right-subtotal-count">0</span></h2>
+                            </div>
+                            <p class="quick-cart-right-tax">Tax included. Shipping calculated at checkout.</p>
+                            <textarea class="quick-order-notes" name="order-notes" rows="4" placeholder="Order notes"></textarea>
+                            <div class="quick-cart-page-buttons">
+                                <button type="button" class="quick-cart-right-check-out" onclick="window.location.href='cart.html'">Check out</button>
+                                <button type="button" class="quick-cart-right-continue-shopping" onclick="window.location.href='productlists.html'">Continue shopping</button>
+                            </div>
+                        </div>
+                    </section>
+                </li>
             </div>
         </ul>
+
+        <div class="mobile-dropdown">
+            <div class="mobile-dropdown-section">
+                <h3>Shop</h3>
+                <div class="mobile-devided-line"></div>
+                <h4>Shop by scent</h4>
+                <ul>
+                    <li>Floral</li>
+                    <li>Green & Botanical</li>
+                    <li>Fig Focus</li>
+                    <li>Marine & Fresh</li>
+                    <li>Smoky / Leather / Tobacco</li>
+                    <li class="dropdown-column-li" data-scent="Woody">Woody</li>
+                    <li>Seasonal</li>
+                </ul>
+                <h4>Shop by collection</h4>
+            </div>
+
+            <div class="mobile-devided-line"></div>
+            <h3>About</h3>
+
+            <h3>Candle care</h3>
+
+        </div>
 </nav>
 
 <!--hero header-->
@@ -187,7 +236,7 @@
 
 <!--footer-->
 <footer>
-
+    <div class="footer-section-without-copyrights">
     <div class="footer-sections">
         <div class="help">
             <h4 class="footer-title">Help</h4>
@@ -201,7 +250,6 @@
                 <li class="footer-list">CONTACT</li>
                 <li class="footer-list">PRIVACY POLICY</li>
             </ul>
-            <p class="footer-copyrights">© 2026 SOH Melbourne. All rights reserved.</p>
         </div>
 
         <div class="followus">
@@ -223,6 +271,10 @@
             <button class="subscribe-button" type="submit">Subscribe</button>
         </form>
     </div>
+
+    </div>
+
+    <p class="footer-copyrights">© 2026 SOH Melbourne. All rights reserved.</p>
 </footer>
 
 </body>
