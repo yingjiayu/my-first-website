@@ -17,8 +17,14 @@
 <nav>
         <ul class="nav-menu">
             <li class="burger-menu">☰</li>
-            <li class="logo"><img src="media/logo.png" alt="soh logo"></li>
-            <li class="shop-dropdown nav-item-left"><span class="nav-item-left-shop">shop</span>
+            <a href="index.html">
+                <li class="logo"><img src="media/logo.png" alt="soh logo"></li>
+            </a>
+            <li class="shop-dropdown nav-item-left">
+                <span class="nav-item-left-shop">shop
+                    <div class="nav-shop-underline"></div>
+                </span>
+
                 <div class="dropdown">
 
                     <div class="dropdown-column">
@@ -55,7 +61,10 @@
             <li class="nav-item-left">candle care</li>
 
             <div class="nav-right">
-                <li class="search-dropdown"><span class="nav-item-left-search">search</span>
+                <li class="search-dropdown">
+                    <span class="nav-item-left-search">search
+                        <div class="nav-search-underline"></div>
+                    </span>
 
                 <div class="search-dropdown-section">
                     <div class="insert-search">
@@ -78,6 +87,7 @@
                 <li class="nav-item-right">login</li>
                 <li class="nav-item-right">
                     <span id="nav-cart">cart</span>
+
                     <section class="quick-cart-section">
                         <div class="quick-cart-shipping-and-quantity">
                             <p class="quick-cart-afteradding-number">
@@ -105,25 +115,28 @@
 
         <div class="mobile-dropdown">
             <div class="mobile-dropdown-section">
-                <h3>Shop</h3>
-                <div class="mobile-devided-line"></div>
-                <h4>Shop by scent</h4>
-                <ul>
-                    <li>Floral</li>
-                    <li>Green & Botanical</li>
-                    <li>Fig Focus</li>
-                    <li>Marine & Fresh</li>
-                    <li>Smoky / Leather / Tobacco</li>
-                    <li class="dropdown-column-li" data-scent="Woody">Woody</li>
-                    <li>Seasonal</li>
-                </ul>
-                <h4>Shop by collection</h4>
+                <h3 class="mobile-dropdown-shop">Shop</h3>
+
+                <div class="mobile-dropdown-shop-section">
+                    <div class="mobile-devided-line"></div>
+                    <h4 class="mobile-scent-dropdown">Shop by scent</h4>
+                    <ul class="mobile-scent-section">
+                        <li>Floral</li>
+                        <li>Green & Botanical</li>
+                        <li>Fig Focus</li>
+                        <li>Marine & Fresh</li>
+                        <li>Smoky / Leather / Tobacco</li>
+                        <li class="dropdown-column-li" data-scent="Woody">Woody</li>
+                        <li>Seasonal</li>
+                    </ul>
+                    <h4>Shop by collection</h4>
+                    <div class="mobile-devided-line"></div>
+                </div>
+
+                <h3>About</h3>
+
+                <h3>Candle care</h3>
             </div>
-
-            <div class="mobile-devided-line"></div>
-            <h3>About</h3>
-
-            <h3>Candle care</h3>
 
         </div>
 </nav>
@@ -213,7 +226,7 @@
                 hand-poured and crafted in Melbourne. Driven by Kristine's vision and the expertise 
                 of renowned perfumer François Merle-Baudoin, SOH brings together artistry, simplicity, 
                 and sophistication to design scents that capture purity, freshness, and a connection 
-                to nature.</p><br><br><br>
+                to nature.</p><br class="br"><br class="br"><br class="br">
                 <p class="read-more">READ MORE →</p>
                 </div>
             </div>   

@@ -199,7 +199,7 @@ function updateCartUI() {
     subtotal += item.price * item.quantity;
 
     cartItems.innerHTML += `
-      <div class="quick-cart-item-one">
+      <div class="quick-cart-item-one" onclick="window.location.href='productpage.html?id=${item.id}'">
         <img class="quick-cart-item-one-image" src="${item.imageProductpage || item.image}" alt="${item.name}">
 
         <div class="quick-cart-item-right">
@@ -222,8 +222,11 @@ function updateCartUI() {
                 +
               </button>
             </div>
+
           </div>
+
         </div>
+
       </div>
     `;
   });
@@ -409,7 +412,7 @@ function renderCartPage() {
     `;
   });
 
-  document.getElementById("cart-right-subtotal-count").innerText = subtotal;
+  document.getElementById("cart-page-subtotal-count").innerText = subtotal;
 
   const freeLimit = 200;
   const remaining = freeLimit - subtotal;
@@ -512,6 +515,14 @@ function applyFilter() {
       normalize(p.collection || "").includes(q)
     );
   }
+
+  const quantity = document.getElementById("filter-quantity-current");
+
+if (quantity) {
+
+  quantity.innerText = result.length;
+
+}
 
   renderProducts(result);
 }
@@ -656,8 +667,11 @@ function renderProductPage() {
         if (!product) return;
   const productPageinfo = document.getElementById("product-page");
   productPageinfo.innerHTML = `
-    <div class="product-image-section">
-
+      <div class="back-to-products">
+          <a href="productlists.html">← Back</a>
+      </div>
+      
+      <div class="product-image-section">
       <img
         class="product-image"
         src="${product.imageProductpage}"
@@ -829,8 +843,7 @@ function searchFunction() {
 
     if (!query) return;
 
-    window.location.href =
-      `productlists.html?search=${encodeURIComponent(query)}`;
+    window.location.href = `productlists.html?search=${encodeURIComponent(query)}`;
   });
 }
 
@@ -872,7 +885,6 @@ document.addEventListener("DOMContentLoaded", () => { //after
     });
 
 // product list page
-
   if (document.getElementById("product-list")) {
 
   const params = new URLSearchParams(window.location.search);
@@ -920,27 +932,23 @@ document.addEventListener("DOMContentLoaded", () => { //after
   }
 // global dropdowns
 
-  dropdownSection(
-    '.shop-dropdown',
-    '.nav-item-left-shop'
-  );
+  dropdownSection('.shop-dropdown','.nav-item-left-shop');
 
-  dropdownSection(
-    '.filter-sortby',
-    '.filter-sortby-title'
-  );
+  dropdownSection('.nav-shop-underline','.nav-item-left-shop');
 
-  dropdownSection(
-    '.filter-collection',
-    '.filter-collection-title'
-  );
+  dropdownSection('.filter-sortby', '.filter-sortby-title');
 
-  dropdownSection(
-    '.search-dropdown',
-    '.nav-item-left-search'
-  );
+  dropdownSection('.filter-collection', '.filter-collection-title');
+
+  dropdownSection('.search-dropdown', '.nav-item-left-search');
+
+  dropdownSection('.nav-search-underline', '.nav-item-left-search');
 
   dropdownSection(".mobile-dropdown", ".burger-menu");
+
+  dropdownSection('.mobile-dropdown-shop-section','.mobile-dropdown-shop');
+
+  dropdownSection('.mobile-scent-section','.mobile-scent-dropdown');
 
   dropdownSection('.quick-cart-section','#nav-cart');
 
