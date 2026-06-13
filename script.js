@@ -177,7 +177,7 @@ function updateCartUI() {
 
   const navCart = document.getElementById("nav-cart");
   if (navCart) {
-    navCart.innerText = totalQuantity > 0 ? `cart (${totalQuantity})` : "cart";
+    navCart.innerText = totalQuantity > 0 ? `Cart (${totalQuantity})` : "Cart";
   }
 
   const quickCartNumber = document.getElementById("quick-cart-number-current");
@@ -199,9 +199,11 @@ function updateCartUI() {
     subtotal += item.price * item.quantity;
 
     cartItems.innerHTML += `
-      <div class="quick-cart-item-one" onclick="window.location.href='productpage.html?id=${item.id}'">
-        <img class="quick-cart-item-one-image" src="${item.imageProductpage || item.image}" alt="${item.name}">
-
+      <div class="quick-cart-item-one">
+    
+        <a href="productpage.html?id=${item.id}">
+          <img class="quick-cart-item-one-image" src="${item.imageProductpage || item.image}" alt="${item.name}">
+        </a>
         <div class="quick-cart-item-right">
           <div class="quick-cart-item-info">
             <h3 class="quick-cart-item-title">${item.name}</h3>
@@ -212,14 +214,12 @@ function updateCartUI() {
             <h3 class="quick-cart-item-price">$${item.price}</h3>
 
             <div class="quick-quantity-count">
-              <button class="quick-cart-quantity-minus" type="button" onclick="decreaseQuantity(${item.id})">
-                -
+              <button class="quick-cart-quantity-minus" type="button" onclick="decreaseQuantity(${item.id})">-
               </button>
 
               <input class="quick-cart-quantity-input" type="number" value="${item.quantity}" readonly>
 
-              <button class="quick-cart-quantity-plus" type="button" onclick="addQuantity(${item.id})">
-                +
+              <button class="quick-cart-quantity-plus" type="button" onclick="addQuantity(${item.id})">+
               </button>
             </div>
 
@@ -270,15 +270,11 @@ function addtoCart() {
 
     saveCart();
     if (document.getElementById("quick-cart-items")) {
-
     updateCartUI();
-
   }
 
   if (document.getElementById("cart-items")) {
-
     renderCartPage();
-
   }
 
     const quickCart = document.querySelector(".quick-cart-section");
@@ -298,13 +294,10 @@ function addQuantity(id) {
   item.quantity++;
   saveCart();
     if (document.getElementById("quick-cart-items")) {
-
     updateCartUI();
-
   }
 
   if (document.getElementById("cart-items")) {
-
     renderCartPage();
   }
 }
@@ -323,13 +316,10 @@ if (item.quantity <= 0) {
 
 saveCart();
   if (document.getElementById("quick-cart-items")) {
-
     updateCartUI();
-
   }
 
   if (document.getElementById("cart-items")) {
-
     renderCartPage();
   }
 }
@@ -519,16 +509,13 @@ function applyFilter() {
   const quantity = document.getElementById("filter-quantity-current");
 
 if (quantity) {
-
   quantity.innerText = result.length;
-
 }
 
   renderProducts(result);
 }
 
 // homepage filters
-
 document.querySelectorAll(".dropdown-column-li")
   .forEach(li => {
     li.addEventListener("click", () => {
@@ -564,34 +551,19 @@ function renderProducts(products) {
     // clickable products
     if(product.id === 2 || product.id === 3 || product.id === 7){
       rowEachproducts += `
-        <a class="productlists-card"
-           href="productpage.html?id=${product.id}">
+        <a class="productlists-card" href="productpage.html?id=${product.id}">
 
-          <img class="productlists-card-image"
-               src="${product.image}"
-               alt="the image of ${product.name}">
+          <img class="productlists-card-image" src="${product.image}" alt="the image of ${product.name}">
 
           <div class="productlists-text">
 
             <div class="productlists-card-textandrating">
-
-              <p class="productlists-card-title">
-                ${product.name}
-              </p>
-
-              <span class="productlists-card-rating">
-                ${product.rating}
-              </span>
-
+              <p class="productlists-card-title">${product.name}</p>
+              <span class="productlists-card-rating">${product.rating}</span>
             </div>
 
-            <p class="productlists-card-info">
-              ${product.description}
-            </p>
-
-            <p class="productlists-card-prices">
-              $${product.price}
-            </p>
+            <p class="productlists-card-info">${product.description}</p>
+            <p class="productlists-card-prices">$${product.price}</p>
 
           </div>
 
@@ -606,41 +578,26 @@ function renderProducts(products) {
       rowEachproducts += `
         <div class="productlists-card">
 
-          <img class="productlists-card-image"
-               src="${product.image}"
-               alt="the image of ${product.name}">
+          <img class="productlists-card-image" src="${product.image}" alt="the image of ${product.name}">
 
           <div class="productlists-text">
-
             <div class="productlists-card-textandrating">
-
-              <p class="productlists-card-title">
-                ${product.name}
-              </p>
-
-              <span class="productlists-card-rating">
-                ${product.rating}
-              </span>
-
+              <p class="productlists-card-title">${product.name}</p>
+              <span class="productlists-card-rating">${product.rating}</span>
             </div>
 
-            <p class="productlists-card-info">
-              ${product.description}
-            </p>
+            <p class="productlists-card-info">${product.description}</p>
 
-            <p class="productlists-card-prices">
-              $${product.price}
-            </p>
+            <p class="productlists-card-prices">$${product.price}</p>
           </div>
+
         </div>
       `;
     }
 
     if ((index + 1) % perRow === 0) {
       list.innerHTML += `
-        <div class="productlists-onerow">
-          ${rowEachproducts}
-        </div>
+        <div class="productlists-onerow">${rowEachproducts}</div>
       `;
       rowEachproducts = "";
     }
@@ -651,9 +608,7 @@ function renderProducts(products) {
   if (rowEachproducts !== "") {
 
     list.innerHTML += `
-      <div class="productlists-onerow">
-        ${rowEachproducts}
-      </div>
+      <div class="productlists-onerow">${rowEachproducts}</div>
     `;
   }
 
@@ -667,81 +622,40 @@ function renderProductPage() {
         if (!product) return;
   const productPageinfo = document.getElementById("product-page");
   productPageinfo.innerHTML = `
-      <div class="back-to-products">
-          <a href="productlists.html">← Back</a>
-      </div>
+    <div class="back-to-products">
+      <a href="productlists.html">← Back</a>
+    </div>
       
-      <div class="product-image-section">
-      <img
-        class="product-image"
-        src="${product.imageProductpage}"
-        alt="the image of ${product.name}"
-      >
-
-      <img
-        class="product-image-bottom"
-        src="${product.imageProductbottom}"
-        alt="the image of ${product.name}"
-      >
-
+    <div class="product-image-section">
+      <img class="product-image" src="${product.imageProductpage}" alt="the image of ${product.name}">
+      <img class="product-image-bottom" src="${product.imageProductbottom}" alt="the image of ${product.name}">
     </div>
 
     <div class="product-detailed-information">
 
-      <h1 class="textinfo-title">
-        ${product.name}
-      </h1>
-
-      <h1 class="textinfo-title">
-        $${product.price}.00 AUD ${product.rating}
-      </h1>
-
-      <p class="textinfo-p">
-        ${product.slogan}
-      </p>
+      <h1 class="textinfo-title">${product.name}</h1>
+      <h1 class="textinfo-title">$${product.price}.00 AUD ${product.rating}</h1>
+      <p class="textinfo-p">${product.slogan}</p>
 
       <div class="textinfo-fragrance-section">
-
-        <h5 class="textinfo-fragrance-title">
-          Fragrance
-        </h5>
-
-        <p class="textinfo-p">
-          Top: ${product.topScents}
-        </p>
-
-        <p class="textinfo-p">
-          Middle: ${product.middleScents}
-        </p>
-
-        <p class="textinfo-p">
-          Base: ${product.baseScents}
-        </p>
-
+        <h5 class="textinfo-fragrance-title">Fragrance</h5>
+        <p class="textinfo-p">Top: ${product.topScents}</p>
+        <p class="textinfo-p">Middle: ${product.middleScents}</p>
+        <p class="textinfo-p">Base: ${product.baseScents}</p>
       </div>
 
-      <p class="textinfo-p-kg">
-        ${product.usingTime}
-      </p>
+      <p class="textinfo-p-kg">${product.usingTime}</p>
 
       <div class="product-description">
 
         <div class="product-description-one">
 
           <div class="product-description-trigger">
-
-            <h5 class="product-description-title">
-              Product Description
-            </h5>
-
+            <h5 class="product-description-title">Product Description</h5>
           </div>
 
           <div class="product-description-dropdown-section">
-
-            <p class="product-description-dropdown">
-              ${product.descriptionProductpage}
-            </p>
-
+            <p class="product-description-dropdown">${product.descriptionProductpage}</p>
           </div>
 
         </div>
@@ -749,19 +663,13 @@ function renderProductPage() {
         <div class="product-description-two">
 
           <div class="product-description-trigger-two">
-
-            <h5 class="product-description-title-two">
-              Candle care
-            </h5>
-
+            <h5 class="product-description-title-two">Candle care</h5>
           </div>
 
           <div class="product-description-dropdown-section-two">
-
             <p class="product-description-dropdown-two">
               Each time you relight your candle trim off the mushroom and make sure your wick is around 1 cm high and never leave a burning candle unattended.
             </p>
-
           </div>
 
         </div>
@@ -769,11 +677,7 @@ function renderProductPage() {
         <div class="product-description-three">
 
           <div class="product-description-trigger-three">
-
-            <h5 class="product-description-title-three">
-              Shipping & Return
-            </h5>
-
+            <h5 class="product-description-title-three">Shipping & Return</h5>
           </div>
 
           <div class="product-description-dropdown-section-three">
@@ -790,15 +694,8 @@ function renderProductPage() {
       </div>
 
       <div class="product-list-buttons">
-
-        <button class="add-to-cart">
-          Add to cart
-        </button>
-
-        <button class="check-out" onclick="window.location.href='cart.html'">
-          Check out
-        </button>
-
+        <button class="add-to-cart">Add to cart</button>
+        <button class="check-out" onclick="window.location.href='cart.html'">Check out</button>
       </div>
 
     </div>
@@ -848,7 +745,7 @@ function searchFunction() {
 }
 
 // init
-document.addEventListener("DOMContentLoaded", () => { //after 
+document.addEventListener("DOMContentLoaded", () => { 
 
   searchFunction();
 
@@ -875,11 +772,9 @@ document.addEventListener("DOMContentLoaded", () => { //after
 
       li.addEventListener("click", () => {
 
-        filterState.collection =
-          normalize(li.innerText);
+        filterState.collection = normalize(li.innerText);
 
         applyFilter();
-
       });
 
     });
@@ -892,12 +787,12 @@ document.addEventListener("DOMContentLoaded", () => { //after
   const scent = params.get("scent");
   const search = params.get("search");
 
-  // scent filter
+// scent filter
   if (scent) {
     filterState.scent = normalize(scent);
   }
 
-  // search filter
+// search filter
   if (search) {
     filterState.search = normalize(search);
   }
@@ -909,29 +804,19 @@ document.addEventListener("DOMContentLoaded", () => { //after
 }
 
 // product page
-
   if (document.getElementById("product-page")) {
 
     renderProductPage();
     addtoCart();
 
-    dropdownSection(
-      '.product-description-one',
-      '.product-description-trigger'
-    );
+    dropdownSection('.product-description-one','.product-description-trigger');
 
-    dropdownSection(
-      '.product-description-two',
-      '.product-description-trigger-two'
-    );
+    dropdownSection('.product-description-two','.product-description-trigger-two');
 
-    dropdownSection(
-      '.product-description-three',
-      '.product-description-trigger-three'
-    );
+    dropdownSection('.product-description-three','.product-description-trigger-three');
   }
-// global dropdowns
 
+// global dropdowns
   dropdownSection('.shop-dropdown','.nav-item-left-shop');
 
   dropdownSection('.nav-shop-underline','.nav-item-left-shop');

@@ -1454,6 +1454,9 @@ footer{
     background-color: #3D2E22;
     color: #ffffff;
 }
+.mobile-delivery-page-button{
+    display: none;
+}
 
 .delivery-right{
     flex: 2;
@@ -2111,7 +2114,8 @@ footer{
   }
 
   .product-info{
-    align-items: center;
+    align-items: flex-start;
+    justify-content: space-between;
   }
 
   .delivery-product-name,
@@ -2145,18 +2149,28 @@ footer{
     font-size: 1rem;
   }
 
-  .delivery-page-button{
+  .mobile-delivery-page-button{
+    display: flex;
+    justify-content: center;
     align-self: center;
     margin-top: 0.5rem;
   }
 
-  .payment-button{
+  .mobile-payment-button{
     width: 8rem;
     height: 1.9rem;
     border-radius: 10px;
     font-size: 0.75rem;
+    background-color: #3D2E22;
+    color: #ffffff;
   }
+
+  .delivery-page-button{
+    display: none;
 }
+
+}
+
 @media (max-width: 652px){
     .filter-featured-text,
     .filter-price-inputs{
@@ -2703,6 +2717,7 @@ footer{
 .productlists-card-info{
     font-size: 0.5rem;
 }
+
 }
 
 

@@ -24,7 +24,7 @@
         <p>$<span class="delivery-order-summary-total">0</span></p>
     </div>
 
-    <form action="confirmation.html" class="delivery-form">
+    <form id="delivery-form" action="confirmation.html" class="delivery-form">
 
         <p class="delivery-form-title">Contact</p>
         <input type="text" name="email" required placeholder="Email">
@@ -60,7 +60,7 @@
         </div>
     </form>
 
-    <div class="delivery-right">
+    <section class="delivery-right">
         <div id="delivery-products">
         </div>
 
@@ -80,6 +80,11 @@
             </div>
 
         </div>
-    </div>
+
+        <div class="mobile-delivery-page-button">
+            <button class="mobile-payment-button" type="submit" form="delivery-form">Pay now</button>
+        </div>
+    </section>
+
 </main>
 </body>
